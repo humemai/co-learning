@@ -208,6 +208,8 @@ class OntologyGod(AgentBrain):
 
                 # Situation split: the input consists of a list with the input from each box
                 for situation_condition in cp_situation_input:
+                    if 'delete' in cp_situation:
+                        cp_situation = []
                     # For each action in this list, we have to identify all items
                     cp_situation.append(self.identify_items(situation_condition))
 
@@ -285,8 +287,17 @@ class OntologyGod(AgentBrain):
             item_type = html_input[type_start + 12:type_end]
             word = html_input[word_start + 3:word_end]
 
+            if item_type == 'location' and 'leftrightbutton' in html_input:
+                if 'Left' in html_input:
+                    word = 'Left' + word
+                elif 'Right' in html_input:
+                    word = 'Right' + word
+
+            if 'Stand still' in word:
+                word = 'Stand still '
+
             # Check for filler words or artifacts, don't add those
-            if 'in' in word or len(word) < 1:
+            if 'in' in word and len(word) < 6 or len(word) < 1:
                 html_input = html_input[item_end + 4:]
                 continue
 

@@ -418,8 +418,8 @@
           // Clear html boxes
           document.getElementById("labelinput").value = "Label";
           document.getElementById("situation_container").innerHTML = '<div class="box_cp box_situ" id="situationbox_1"></div><div class="box_cp box_situ" id="situationbox_2"></div>';
-          document.getElementById("whatwedo").innerHTML = '<div class="agent_name" id="ag_1">Human</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box box_action" id="patternbox_3"></div>';
-          document.getElementById("whatwedo_ag2").innerHTML = '<div class="agent_name" id="ag_1">Robot</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box box_action" id="patternbox_3"></div>';
+          document.getElementById("whatwedo").innerHTML = '<div class="agent_name" id="ag_1">Human</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box_cp box_action" id="patternbox_3"></div>';
+          document.getElementById("whatwedo_ag2").innerHTML = '<div class="agent_name" id="ag_1">Robot</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box_cp box_action" id="patternbox_3"></div>';
           document.getElementById("postsitu_container").innerHTML = '<div class="box_cp box_situ" id="postsitubox_1"></div><div class="box_cp box_situ" id="postsitubox_2"></div>'
         }
 
@@ -463,19 +463,20 @@
 
         // Store data in JS object (to be converted to JSON later?)
         storedPatterns[label] = {situation:situationInput, actionA:actionAgent1Input, actionB:actionAgent2Input, postsitu:postsituInput};
+        console.log("Rough store");
         console.log(storedPatterns);
 
         // Split html into separate actions for CP
         for (let i=0; i < nr_boxes; i++){
           var startlocation = actionAgent1Input.indexOf('patternbox') + 14;
-          var startlocation2 = actionAgent2Input.indexOf('patternbox2') + 15;
+          var startlocation2 = actionAgent2Input.indexOf('patternbox') + 15;
 
           actionAgent1Input = actionAgent1Input.slice(startlocation, actionAgent1Input.length);
           actionAgent2Input = actionAgent2Input.slice(startlocation2, actionAgent2Input.length);
 
           if (actionAgent1Input.indexOf('patternbox') > 0) {
-            actionAgent1Output[i] = actionAgent1Input.slice(0,actionAgent1Input.indexOf('patternbox')-40);
-            actionAgent2Output[i] = actionAgent2Input.slice(0,actionAgent2Input.indexOf('patternbox2')-40);
+            actionAgent1Output[i] = actionAgent1Input.slice(0,actionAgent1Input.indexOf('patternbox')-41);
+            actionAgent2Output[i] = actionAgent2Input.slice(0,actionAgent2Input.indexOf('patternbox')-41);
           }
           else {
             actionAgent1Output[i] = actionAgent1Input.slice(0,actionAgent1Input.length-6);
@@ -511,8 +512,8 @@
 
         // Clear html boxes
         document.getElementById("situation_container").innerHTML = '<div class="box_cp box_situ" id="situationbox_1"></div><div class="box_cp box_situ" id="situationbox_2"></div>';
-        document.getElementById("whatwedo").innerHTML = '<div class="agent_name" id="ag_1">Human</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box box_action" id="patternbox_3"></div>';
-        document.getElementById("whatwedo_ag2").innerHTML = '<div class="agent_name" id="ag_1">Robot</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box box_action" id="patternbox_3"></div>';
+        document.getElementById("whatwedo").innerHTML = '<div class="agent_name" id="ag_1">Human</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box_cp box_action" id="patternbox_3"></div>';
+        document.getElementById("whatwedo_ag2").innerHTML = '<div class="agent_name" id="ag_1">Robot</div><div class="box_cp box_action" id="patternbox_1"></div><div class="box_cp box_action" id="patternbox_2"></div><div class="box_cp box_action" id="patternbox_3"></div>';
         document.getElementById("postsitu_container").innerHTML = '<div class="box_cp box_situ" id="postsitubox_1"></div><div class="box_cp box_situ" id="postsitubox_2"></div>'
 
         //Code that decodes the above into the separate pieces, then stores that somewhere

@@ -370,7 +370,41 @@ class CustomHumanAgentBrain(HumanAgentBrain):
 
         # On top of [object/actor/location] (to be implemented later)
         object_found = self.state[{"location": location, 'is_movable': True}]
+        other_object_found = self.state[{"location": (loc_x, loc_y+1), 'is_movable': True}]
+        if other_object_found is not None:
+            if object_found is not None:
+                # Both are not None, add
+                if isinstance(object_found, dict):
+                    if isinstance(other_object_found, dict):
+                        # Both are dicts
+                        object_found = [object_found, other_object_found]
+                    else:
+                        object_found = [object_found] + other_object_found
+                else:
+                    if isinstance(other_object_found, dict):
+                        object_found = object_found + [other_object_found]
+                    else:
+                        object_found= object_found + other_object_found
+            else:
+                object_found = other_object_found
         agents_found = self.state[{"location": location, 'isAgent': True}]
+        other_agents_found = self.state[{"location": (loc_x, loc_y+1), 'isAgent': True}]
+        if other_agents_found is not None:
+            if agents_found is not None:
+                # Both are not None, add
+                if isinstance(agents_found, dict):
+                    if isinstance(other_agents_found, dict):
+                        # Both are dicts
+                        agents_found = [agents_found, other_agents_found]
+                    else:
+                        agents_found = [agents_found] + other_agents_found
+                else:
+                    if isinstance(other_agents_found, dict):
+                        agents_found = agents_found + [other_agents_found]
+                    else:
+                        agents_found = agents_found + other_agents_found
+            else:
+                agents_found = other_agents_found
         if object_found or agents_found:
             # The human is on top of another object, check if agent or rock
             if object_found:
