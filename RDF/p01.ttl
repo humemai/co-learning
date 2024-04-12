@@ -1,0 +1,48 @@
+@prefix colearn: <http://example.org/co-learning#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Add participant 01
+colearn:p01 a colearn:Human .
+
+# Define situation 01
+colearn:Situation01 a colearn:Situation .
+
+# Actions and entities in Situation01
+colearn:LargeRock colearn:topOf colearn:RockPile ;
+                  colearn:inSituation colearn:Situation01 .
+colearn:LargeRock colearn:bottomOf colearn:RockPile ;
+                  colearn:inSituation colearn:Situation01 .
+colearn:Robot colearn:moveTo colearn:LargeRock ;
+              colearn:inSituation colearn:Situation01 .
+colearn:p01 colearn:moveTo colearn:LargeRock ;
+            colearn:inSituation colearn:Situation01 .
+colearn:Robot colearn:break_ colearn:LargeRock ;
+              colearn:inSituation colearn:Situation01 .
+colearn:LargeRock colearn:rightSideOf colearn:RockPile ;
+                  colearn:inSituation colearn:Situation01 .
+colearn:Robot colearn:break_ colearn:LargeRock ;
+              colearn:inSituation colearn:Situation01 .
+colearn:LargeRock colearn:bottomOf colearn:RockPile ;
+                  colearn:inSituation colearn:Situation01 .
+colearn:p01 colearn:pickUp colearn:SmallRock ;
+            colearn:inSituation colearn:Situation01 .
+colearn:SmallRock colearn:topOf colearn:RockPile ;
+                 colearn:inSituation colearn:Situation01 .
+colearn:Robot colearn:pickUp colearn:SmallRock ;
+              colearn:inSituation colearn:Situation01 .
+colearn:SmallRock colearn:topOf colearn:RockPile ;
+                 colearn:inSituation colearn:Situation01 .
+
+# Define situation 02
+colearn:Situation02 a colearn:Situation .
+
+# Actions and entities in Situation02
+colearn:SmallRock colearn:topOf colearn:RockPile ;
+                 colearn:inSituation colearn:Situation02 .
+colearn:p01 colearn:hasState colearn:MoveBackAndForth ;
+            colearn:inSituation colearn:Situation02 .
+colearn:p01 colearn:pickUp colearn:SmallRock ;
+            colearn:inSituation colearn:Situation02 .
+colearn:Robot colearn:moveTo colearn:SmallRock ;
+              colearn:inSituation colearn:Situation02 .

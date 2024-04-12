@@ -1,0 +1,8 @@
+@prefix colearn: <http://example.org/coLearningOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+colearn:John a colearn:Human .
+colearn:John colearn:moveTo colearn:LargeRock .
+colearn:Robot colearn:hasState colearn:StandStill .
+colearn:Robot colearn:topOf colearn:RockPile .
