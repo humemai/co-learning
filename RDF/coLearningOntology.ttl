@@ -1,0 +1,65 @@
+@prefix colearn: <http://example.org/co-learning#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# General class
+colearn:Entity a rdfs:Class .
+
+# Actors
+colearn:Actor a rdfs:Class ;
+    rdfs:subClassOf colearn:Entity .
+# Human is a class, since there are more than one participant
+colearn:Human a rdfs:Class ;
+    rdfs:subClassOf colearn:Actor .
+
+## Objects
+colearn:Object a rdfs:Class ;
+    rdfs:subClassOf colearn:Entity .
+
+## Actor-Actions
+colearn:ActorAction a rdfs:Class .
+
+# Properties (relations)
+colearn:hasState a rdf:Property ;
+    rdfs:domain colearn:Actor ;
+    rdfs:range colearn:ActorAction .
+colearn:moveTo a rdf:Property ;
+    rdfs:domain colearn:Actor ;
+    rdfs:range colearn:Object .
+colearn:pickUp a rdf:Property ;
+    rdfs:domain colearn:Actor ;
+    rdfs:range colearn:Object .
+colearn:drop a rdf:Property ;
+    rdfs:domain colearn:Actor ;
+    rdfs:range colearn:Object .
+colearn:break_ a rdf:Property ;  # break can't be used as it is a reserved word
+    rdfs:domain colearn:Actor ;
+    rdfs:range colearn:Object .
+colearn:topOf a rdf:Property ;
+    rdfs:domain colearn:Entity ;
+    rdfs:range colearn:Object .
+colearn:above a rdf:Property ;  
+    rdfs:domain colearn:Entity ;
+    rdfs:range colearn:Object .
+colearn:bottomOf a rdf:Property ;
+    rdfs:domain colearn:Entity ;
+    rdfs:range colearn:Object .
+colearn:rightSideOf a rdf:Property ;
+    rdfs:domain colearn:Entity ;
+    rdfs:range colearn:Object .
+colearn:leftSideOf a rdf:Property ;
+    rdfs:domain colearn:Entity ;
+    rdfs:range colearn:Object .
+
+# Pre-populated instances
+colearn:Robot a colearn:Actor .  # Robot is an instance of Actor, since there is only one Robot
+colearn:Victim a colearn:Actor . # Victim is an instance of Actor, since there is only one Victim
+
+colearn:LargeRock a colearn:Object .
+colearn:SmallRock a colearn:Object .
+colearn:BrownRock a colearn:Object .
+colearn:RockPile a colearn:Object .
+colearn:Field a colearn:Object .
+
+colearn:MoveBackAndForth a colearn:ActorAction .
+colearn:StandStill a colearn:ActorAction .

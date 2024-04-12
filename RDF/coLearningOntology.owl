@@ -113,8 +113,4 @@
         <rdfs:domain rdf:resource="#ActorOrObject" />
         <rdfs:range rdf:resource="#RockPileOrField" />
     </owl:ObjectProperty>
-    <!-- <owl:ObjectProperty rdf:about="#in">
-        <rdfs:domain rdf:resource="#ActorOrObject" />
-        <rdfs:range rdf:resource="#Object" />
-    </owl:ObjectProperty> -->
 </rdf:RDF>
