@@ -1,0 +1,94 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix colearn: <http://example.org/colearn#> .
+
+# Ontology Declaration
+colearn: a owl:Ontology ;
+    rdfs:label "Co-Learning Ontology" .
+
+# Classes
+colearn:Participant a owl:Class ;
+    rdfs:label "Participant" ;
+    rdfs:comment "Represents individuals involved in a study." .
+
+colearn:Situation a owl:Class ;
+    rdfs:label "Situation" ;
+    rdfs:comment "A particular scenario in which participants perform actions." .
+
+colearn:Action a owl:Class ;
+    rdfs:label "Action" ;
+    rdfs:comment "Specific actions that participants perform in a situation." .
+
+colearn:HumanAction a owl:Class ;
+    rdfs:label "Human Action" ;
+    rdfs:comment "Actions performed by human participants." ;
+    rdfs:subClassOf colearn:Action .
+
+colearn:RobotAction a owl:Class ;
+    rdfs:label "Robot Action" ;
+    rdfs:comment "Actions performed by the robot participant." ;
+    rdfs:subClassOf colearn:Action .
+
+colearn:SituationOrAction a owl:Class ;
+    owl:unionOf (colearn:Situation colearn:Action) .
+
+# Object Properties
+colearn:hasSituation a owl:ObjectProperty ;
+    rdfs:label "Has Situation" ;
+    rdfs:comment "Links a participant to their respective situations." ;
+    rdfs:domain colearn:Participant ;
+    rdfs:range colearn:Situation ;
+    owl:inverseOf colearn:isSituationOf .
+ 
+colearn:isSituationOf a owl:ObjectProperty ;
+    rdfs:label "Is Situation Of" ;
+    rdfs:comment "Indicates which participant a situation belongs to." ;
+    rdfs:domain colearn:Situation ;
+    rdfs:range colearn:Participant .
+
+colearn:hasAction a owl:ObjectProperty ;
+    rdfs:label "Has Action" ;
+    rdfs:comment "Associates actions to a particular situation." ;
+    rdfs:domain colearn:Situation ;
+    rdfs:range colearn:Action ;
+    owl:inverseOf colearn:isFirstActionOf .
+
+colearn:isActionOf a owl:ObjectProperty ;
+    rdfs:label "Is Action Of" ;
+    rdfs:comment "Links an action back to its situation." ;
+    rdfs:domain colearn:Action ;
+    rdfs:range colearn:Situation .
+
+colearn:hasNextAction a owl:ObjectProperty ;
+    rdfs:label "Next Action" ;
+    rdfs:comment "Specifies the next action in a sequence of actions." ;
+    rdfs:domain colearn:Action ;
+    rdfs:range colearn:Action ;
+    owl:inverseOf colearn:hasPreviousAction .
+
+# Data Properties
+colearn:actorType a owl:DatatypeProperty ;
+    rdfs:label "Actor Type" ;
+    rdfs:comment "Describes the type of actor performing an action." ;
+    rdfs:domain colearn:SituationOrAction ;
+    rdfs:range xsd:string .
+
+colearn:actionType a owl:DatatypeProperty ;
+    rdfs:label "Action Type" ;
+    rdfs:comment "Describes the type of action performed." ;
+    rdfs:domain colearn:SituationOrAction ;
+    rdfs:range xsd:string .
+
+colearn:objectType a owl:DatatypeProperty ;
+    rdfs:label "Object Type" ;
+    rdfs:comment "Specifies the object involved in an action." ;
+    rdfs:domain colearn:SituationOrAction ;
+    rdfs:range xsd:string .
+
+colearn:locationType a owl:DatatypeProperty ;
+    rdfs:label "Location Type" ;
+    rdfs:comment "Indicates the location at which an action takes place." ;
+    rdfs:domain colearn:SituationOrAction ;
+    rdfs:range xsd:string .
