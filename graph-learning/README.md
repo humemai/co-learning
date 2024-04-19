@@ -4,14 +4,14 @@
 
 This data is stored in [`../typedb-schema-and-data/`](../typedb-schema-and-data/).
 Originally both schema and the data were made with TypeDB, which is a key-value pair
-pair sort of data. This data is not necessarily a graph type of data. So I convert it to
-RDF data.
+sort of data. This data is not necessarily a graph type of data. So I convert it to RDF
+data.
 
 **TODO-1: The excel files had more than one sheet per file. pandas dataframe only use
 the first sheet. Ask Emma if it's necessary to use other sheets as well.**
 
 **TODO-2: Next time I get this data, find a way to get it raw TypeDB data, not an excel
-file. It wasn't so eays to parse the excel spreadsheets.**
+file. It wasn't so easy to parse the excel spreadsheets.**
 
 ## OWL/RDF ontology (schema)
 
@@ -161,7 +161,7 @@ We first load the necessary namespaces. `colearn:` is designed by ourselves for 
 project. The rest of the lines are nothing but writing out RDF triples in Turtle. As
 defined in the ontology, the four data type properties, `colearn:actorType`,
 `colearn:actionType`, `colearn:objectType`, and `colearn:locationType` are extensively
-used. All of these four properties take a string value, i.e., literal, as their tails.
+used. All of these four properties take a string value, i.e., literal, as their targets.
 The literal values that they can take are finite. The above example can be represented
 as a graph as below.
 
@@ -170,8 +170,8 @@ as a graph as below.
 The properties (relations) whose range is literal are displayed under a node, while the
 properties whose range is an instance are displayed with an edge.
 
-One problem here is that some participants have specified multiple DatatypeProperties.
-For example, the sitaution node `p01_s00` has two `objectType` and two `locationType`.
+One problem here is that some participants have specified multiple `DatatypeProperties`.
+For example, the sitaution node `p01_s00` has two `objectType`s and two `locationType`s.
 At the moemnt, there is no order in them, so the RDF doesn't know which `locationType`
 was used with which `objectType`.
 
@@ -181,8 +181,9 @@ As far as I know, the human actions and the robot actions that share the same su
 supposed to happen at the same time. For example, `p01_s00_h00` happens while
 `p01_s00_r00` is happening, and `p01_s00_h01` happens while `p01_s00_r01` happens. In
 this example, there are two human actions and four robot actions. This happened since
-this data was collected in 2022, but the new data in 2024 won't have this problem. That
-is, the number of human actions is always equal to that of robot acitons.
+this data was collected in 2022, where there were no two separate columns for human and
+robot, but the new data in 2024 won't have this problem. That is, the number of human
+actions is always equal to that of robot acitons.
 
 **TODO-5: Ask Emma if the above is true.**
 
@@ -205,7 +206,7 @@ data will have a reward. That is, the tuples can be _(situation, human-robot act
 reward)_. From the contextual bandit point of view, these tuples can be considered as
 (state, action, reward), and we can learn an optimal policy from them.
 
-**TODO-5: Double check with Emma if obtaining (situation, human-robot actions, reward)
+**TODO-6: Double check with Emma if obtaining (situation, human-robot actions, reward)
 is easy.**
 
 _(situation, human-robot actions)_ pairs are very likely to be duplicate. However, it's
@@ -263,3 +264,33 @@ which can then be used to compare graphs. Here’s how to use GNNs for this purp
 
 I didn't do any of the above two approaches yet. I'll try soon when I get the reward
 values. (state, action) tuples with high rewards are probably more useful.
+
+## Using the learned graphs as memory for co-learning
+
+This is indeed the goal of this whole thing. If we correctly learn (state, action,
+reward) tuples, the agent can use this in the next experiments. It can choose a robot
+action that has the highest reward, and potentially ask the human participants to
+perform the human-actions that it thinks are the best. I haven't figured out how to do
+this yet. The graph learning comes first. The graph learning will be done in RDF, but
+the GUI between the human and the machine still uses TypeDB. The code somewhere there.
+
+**TODO-7: Ask Emma how I can start this. Perhaps she can point me to some specific lines
+of her code.**
+
+## Nice-to-haves
+
+### Refactoring for higher versions
+
+At the moment, the python version used is 3.8, which is quite old. If I want to use a
+higher python version, not only the other dependencies have to be changed, but also some
+python code has to be changed as well. This refactoring doesn't seem worth it at this
+moment.
+
+### Hosting co-learning GUI indefinitely on the Internet
+
+Using something like [GCP Cloud Run](https://cloud.google.com/run) allows one to host a
+simple app server only when it's being used. This is very cheap.
+
+## Author
+
+Taewoon Kim (taewoon@humem.ai)
