@@ -8,20 +8,23 @@
 colearn:p15 a colearn:Participant ;
     rdfs:label "Participant p15" .
 
+# A new situation p15_s00 starts
+colearn:p15 colearn:hasSituation colearn:p15_s00 .
+
 # Define a situation.
-colearn:situation_p15_s00 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 00" ;
+colearn:p15_s00 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s00" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "large rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of object" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s00_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s00_ra00 .
+    colearn:hasHumanAction colearn:p15_s00_h00 ;
+    colearn:hasRobotAction colearn:p15_s00_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s00_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 00, Human-Action 00" ;
+colearn:p15_s00_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s00, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
@@ -29,17 +32,20 @@ colearn:action_p15_s00_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s00 .
 
 # Define the Robot actions.
-colearn:action_p15_s00_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 00, Robot-Action 00" ;
+colearn:p15_s00_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s00, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s00 .
 
+# A new situation p15_s01 starts
+colearn:p15 colearn:hasSituation colearn:p15_s01 .
+
 # Define a situation.
-colearn:situation_p15_s01 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 01" ;
+colearn:p15_s01 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s01" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
@@ -49,12 +55,12 @@ colearn:situation_p15_s01 a colearn:Situation ;
     colearn:locationType "on top of object" ;
     colearn:locationType "on top of actor" ;
     colearn:locationType "on top of object" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s01_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s01_ra00 .
+    colearn:hasHumanAction colearn:p15_s01_h00 ;
+    colearn:hasRobotAction colearn:p15_s01_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s01_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 01, Human-Action 00" ;
+colearn:p15_s01_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s01, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
@@ -62,26 +68,29 @@ colearn:action_p15_s01_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s01 .
 
 # Define the Robot actions.
-colearn:action_p15_s01_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 01, Robot-Action 00" ;
+colearn:p15_s01_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s01, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "stand still in location" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s01 .
 
+# A new situation p15_s02 starts
+colearn:p15 colearn:hasSituation colearn:p15_s02 .
+
 # Define a situation.
-colearn:situation_p15_s02 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 02" ;
+colearn:p15_s02 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s02" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s02_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s02_ra00 .
+    colearn:hasHumanAction colearn:p15_s02_h00 ;
+    colearn:hasRobotAction colearn:p15_s02_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s02_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 02, Human-Action 00" ;
+colearn:p15_s02_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s02, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
@@ -89,47 +98,48 @@ colearn:action_p15_s02_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s02 .
 
 # Define the Robot actions.
-colearn:action_p15_s02_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 02, Robot-Action 00" ;
+colearn:p15_s02_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s02, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "human" ;
     colearn:actionType "move back and forth in location" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s02 ;
-    colearn:hasNextAction colearn:action_p15_s02_a01 .
+    colearn:hasNextAction colearn:p15_s02_r01 .
 
-colearn:action_p15_s02_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 02, Robot-Action 01" ;
+colearn:p15_s02_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s02, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s02 ;
-    colearn:hasNextAction colearn:action_p15_s02_a02 ;
-    colearn:hasPreviousAction colearn:action_p15_s02_a00 .
+    colearn:hasNextAction colearn:p15_s02_r02 ;
+    colearn:hasPreviousAction colearn:p15_s02_r00 .
 
-colearn:action_p15_s02_a02 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 02, Robot-Action 02" ;
+colearn:p15_s02_r02 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s02, Robot-Action r02" ;
     colearn:actorType "robot" ;
     colearn:actionType "stand still in location" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s02 ;
-    colearn:hasPreviousAction colearn:action_p15_s02_a01 .
+    colearn:hasPreviousAction colearn:p15_s02_r01 .
+
+# A new situation p15_s03 starts
+colearn:p15 colearn:hasSituation colearn:p15_s03 .
 
 # Define a situation.
-colearn:situation_p15_s03 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 03" ;
+colearn:p15_s03 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s03" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s03_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s03_ra00 .
+    colearn:hasRobotAction colearn:p15_s03_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s03_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 03, Robot-Action 00" ;
+colearn:p15_s03_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s03, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "break object in location" ;
@@ -137,39 +147,43 @@ colearn:action_p15_s03_a00 a colearn:RobotAction ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s03 .
 
+# A new situation p15_s04 starts
+colearn:p15 colearn:hasSituation colearn:p15_s04 .
+
 # Define a situation.
-colearn:situation_p15_s04 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 04" ;
+colearn:p15_s04 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s04" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s04_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s04_ra00 .
+    colearn:hasHumanAction colearn:p15_s04_h00 .
 
 # Define the Human actions.
-colearn:action_p15_s04_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 04, Human-Action 00" ;
+colearn:p15_s04_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s04, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "bottom of rock pile" ;
     colearn:isActionOf colearn:p15_s04 .
 
-# Define the Robot actions.
+# A new situation p15_s05 starts
+colearn:p15 colearn:hasSituation colearn:p15_s05 .
+
 # Define a situation.
-colearn:situation_p15_s05 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 05" ;
+colearn:p15_s05 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s05" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s05_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s05_ra00 .
+    colearn:hasHumanAction colearn:p15_s05_h00 ;
+    colearn:hasRobotAction colearn:p15_s05_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s05_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 05, Human-Action 00" ;
+colearn:p15_s05_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s05, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actorType "victim" ;
     colearn:actionType "pick up object in location" ;
@@ -178,8 +192,8 @@ colearn:action_p15_s05_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s05 .
 
 # Define the Robot actions.
-colearn:action_p15_s05_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 05, Robot-Action 00" ;
+colearn:p15_s05_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s05, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "break object in location" ;
@@ -187,21 +201,24 @@ colearn:action_p15_s05_a00 a colearn:RobotAction ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s05 .
 
+# A new situation p15_s06 starts
+colearn:p15 colearn:hasSituation colearn:p15_s06 .
+
 # Define a situation.
-colearn:situation_p15_s06 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 06" ;
+colearn:p15_s06 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s06" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "large rock" ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of object" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s06_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s06_ra00 .
+    colearn:hasHumanAction colearn:p15_s06_h00 ;
+    colearn:hasRobotAction colearn:p15_s06_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s06_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 06, Human-Action 00" ;
+colearn:p15_s06_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s06, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
@@ -209,120 +226,124 @@ colearn:action_p15_s06_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s06 .
 
 # Define the Robot actions.
-colearn:action_p15_s06_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 06, Robot-Action 00" ;
+colearn:p15_s06_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s06, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s06 ;
-    colearn:hasNextAction colearn:action_p15_s06_a01 .
+    colearn:hasNextAction colearn:p15_s06_r01 .
 
-colearn:action_p15_s06_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 06, Robot-Action 01" ;
+colearn:p15_s06_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s06, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s06 ;
-    colearn:hasPreviousAction colearn:action_p15_s06_a00 .
+    colearn:hasPreviousAction colearn:p15_s06_r00 .
+
+# A new situation p15_s07 starts
+colearn:p15 colearn:hasSituation colearn:p15_s07 .
 
 # Define a situation.
-colearn:situation_p15_s07 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 07" ;
+colearn:p15_s07 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s07" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of object" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s07_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s07_ra00 .
+    colearn:hasRobotAction colearn:p15_s07_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s07_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 07, Robot-Action 00" ;
+colearn:p15_s07_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s07, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of object" ;
     colearn:isActionOf colearn:p15_s07 ;
-    colearn:hasNextAction colearn:action_p15_s07_a01 .
+    colearn:hasNextAction colearn:p15_s07_r01 .
 
-colearn:action_p15_s07_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 07, Robot-Action 01" ;
+colearn:p15_s07_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s07, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s07 ;
-    colearn:hasPreviousAction colearn:action_p15_s07_a00 .
+    colearn:hasPreviousAction colearn:p15_s07_r00 .
+
+# A new situation p15_s08 starts
+colearn:p15 colearn:hasSituation colearn:p15_s08 .
 
 # Define a situation.
-colearn:situation_p15_s08 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 08" ;
+colearn:p15_s08 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s08" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s08_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s08_ra00 .
+    colearn:hasRobotAction colearn:p15_s08_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s08_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 08, Robot-Action 00" ;
+colearn:p15_s08_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s08, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s08 ;
-    colearn:hasNextAction colearn:action_p15_s08_a01 .
+    colearn:hasNextAction colearn:p15_s08_r01 .
 
-colearn:action_p15_s08_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 08, Robot-Action 01" ;
+colearn:p15_s08_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s08, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s08 ;
-    colearn:hasPreviousAction colearn:action_p15_s08_a00 .
+    colearn:hasPreviousAction colearn:p15_s08_r00 .
+
+# A new situation p15_s09 starts
+colearn:p15 colearn:hasSituation colearn:p15_s09 .
 
 # Define a situation.
-colearn:situation_p15_s09 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 09" ;
+colearn:p15_s09 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s09" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:locationType "on top of object" ;
     colearn:locationType "top of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s09_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s09_ra00 .
+    colearn:hasHumanAction colearn:p15_s09_h00 .
 
 # Define the Human actions.
-colearn:action_p15_s09_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 09, Human-Action 00" ;
+colearn:p15_s09_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s09, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "stand still in location" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s09 .
 
-# Define the Robot actions.
+# A new situation p15_s10 starts
+colearn:p15 colearn:hasSituation colearn:p15_s10 .
+
 # Define a situation.
-colearn:situation_p15_s10 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 10" ;
+colearn:p15_s10 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s10" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s10_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s10_ra00 .
+    colearn:hasRobotAction colearn:p15_s10_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s10_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 10, Robot-Action 00" ;
+colearn:p15_s10_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s10, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "break object in location" ;
@@ -330,19 +351,21 @@ colearn:action_p15_s10_a00 a colearn:RobotAction ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s10 .
 
+# A new situation p15_s11 starts
+colearn:p15 colearn:hasSituation colearn:p15_s11 .
+
 # Define a situation.
-colearn:situation_p15_s11 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 11" ;
+colearn:p15_s11 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s11" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s11_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s11_ra00 .
+    colearn:hasHumanAction colearn:p15_s11_h00 .
 
 # Define the Human actions.
-colearn:action_p15_s11_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 11, Human-Action 00" ;
+colearn:p15_s11_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s11, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actorType "victim" ;
     colearn:actionType "pick up object in location" ;
@@ -350,97 +373,103 @@ colearn:action_p15_s11_a00 a colearn:HumanAction ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s11 ;
-    colearn:hasNextAction colearn:action_p15_s11_a01 .
+    colearn:hasNextAction colearn:p15_s11_h01 .
 
-colearn:action_p15_s11_a01 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 11, Human-Action 01" ;
+colearn:p15_s11_h01 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s11, Human-Action h01" ;
     colearn:actorType "human" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s11 ;
-    colearn:hasPreviousAction colearn:action_p15_s11_a00 .
+    colearn:hasPreviousAction colearn:p15_s11_h00 .
 
-# Define the Robot actions.
+# A new situation p15_s12 starts
+colearn:p15 colearn:hasSituation colearn:p15_s12 .
+
 # Define a situation.
-colearn:situation_p15_s12 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 12" ;
+colearn:p15_s12 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s12" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "human" ;
     colearn:actionType "move back and forth in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s12_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s12_ra00 .
+    colearn:hasRobotAction colearn:p15_s12_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s12_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 12, Robot-Action 00" ;
+colearn:p15_s12_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s12, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "move back and forth in location" ;
     colearn:locationType "above rock pile" ;
     colearn:isActionOf colearn:p15_s12 ;
-    colearn:hasNextAction colearn:action_p15_s12_a01 .
+    colearn:hasNextAction colearn:p15_s12_r01 .
 
-colearn:action_p15_s12_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 12, Robot-Action 01" ;
+colearn:p15_s12_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s12, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s12 ;
-    colearn:hasPreviousAction colearn:action_p15_s12_a00 .
+    colearn:hasPreviousAction colearn:p15_s12_r00 .
+
+# A new situation p15_s13 starts
+colearn:p15 colearn:hasSituation colearn:p15_s13 .
 
 # Define a situation.
-colearn:situation_p15_s13 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 13" ;
+colearn:p15_s13 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s13" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s13_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s13_ra00 .
+    colearn:hasHumanAction colearn:p15_s13_h00 ;
+    colearn:hasRobotAction colearn:p15_s13_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s13_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 13, Human-Action 00" ;
+colearn:p15_s13_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s13, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s13 ;
-    colearn:hasNextAction colearn:action_p15_s13_a01 .
+    colearn:hasNextAction colearn:p15_s13_h01 .
 
-colearn:action_p15_s13_a01 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 13, Human-Action 01" ;
+colearn:p15_s13_h01 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s13, Human-Action h01" ;
     colearn:actorType "human" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s13 ;
-    colearn:hasPreviousAction colearn:action_p15_s13_a00 .
+    colearn:hasPreviousAction colearn:p15_s13_h00 .
 
 # Define the Robot actions.
-colearn:action_p15_s13_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 13, Robot-Action 00" ;
+colearn:p15_s13_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s13, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "move back and forth in location" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s13 .
 
+# A new situation p15_s14 starts
+colearn:p15 colearn:hasSituation colearn:p15_s14 .
+
 # Define a situation.
-colearn:situation_p15_s14 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 14" ;
+colearn:p15_s14 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s14" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s14_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s14_ra00 .
+    colearn:hasHumanAction colearn:p15_s14_h00 ;
+    colearn:hasRobotAction colearn:p15_s14_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s14_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 14, Human-Action 00" ;
+colearn:p15_s14_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s14, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "move back and forth in location" ;
     colearn:objectType "large rock" ;
@@ -448,79 +477,85 @@ colearn:action_p15_s14_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s14 .
 
 # Define the Robot actions.
-colearn:action_p15_s14_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 14, Robot-Action 00" ;
+colearn:p15_s14_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s14, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:isActionOf colearn:p15_s14 .
 
+# A new situation p15_s15 starts
+colearn:p15 colearn:hasSituation colearn:p15_s15 .
+
 # Define a situation.
-colearn:situation_p15_s15 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 15" ;
+colearn:p15_s15 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s15" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s15_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s15_ra00 .
+    colearn:hasHumanAction colearn:p15_s15_h00 ;
+    colearn:hasRobotAction colearn:p15_s15_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s15_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 15, Human-Action 00" ;
+colearn:p15_s15_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s15, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s15 ;
-    colearn:hasNextAction colearn:action_p15_s15_a01 .
+    colearn:hasNextAction colearn:p15_s15_h01 .
 
-colearn:action_p15_s15_a01 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 15, Human-Action 01" ;
+colearn:p15_s15_h01 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s15, Human-Action h01" ;
     colearn:actorType "human" ;
     colearn:actorType "victim" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s15 ;
-    colearn:hasPreviousAction colearn:action_p15_s15_a00 .
+    colearn:hasPreviousAction colearn:p15_s15_h00 .
 
 # Define the Robot actions.
-colearn:action_p15_s15_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 15, Robot-Action 00" ;
+colearn:p15_s15_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s15, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s15 ;
-    colearn:hasNextAction colearn:action_p15_s15_a01 .
+    colearn:hasNextAction colearn:p15_s15_r01 .
 
-colearn:action_p15_s15_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 15, Robot-Action 01" ;
+colearn:p15_s15_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s15, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s15 ;
-    colearn:hasPreviousAction colearn:action_p15_s15_a00 .
+    colearn:hasPreviousAction colearn:p15_s15_r00 .
+
+# A new situation p15_s16 starts
+colearn:p15 colearn:hasSituation colearn:p15_s16 .
 
 # Define a situation.
-colearn:situation_p15_s16 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 16" ;
+colearn:p15_s16 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s16" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s16_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s16_ra00 .
+    colearn:hasHumanAction colearn:p15_s16_h00 ;
+    colearn:hasRobotAction colearn:p15_s16_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s16_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 16, Human-Action 00" ;
+colearn:p15_s16_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s16, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "move back and forth in location" ;
     colearn:objectType "large rock" ;
@@ -529,29 +564,32 @@ colearn:action_p15_s16_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s16 .
 
 # Define the Robot actions.
-colearn:action_p15_s16_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 16, Robot-Action 00" ;
+colearn:p15_s16_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s16, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s16 .
 
+# A new situation p15_s17 starts
+colearn:p15 colearn:hasSituation colearn:p15_s17 .
+
 # Define a situation.
-colearn:situation_p15_s17 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 17" ;
+colearn:p15_s17 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s17" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s17_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s17_ra00 .
+    colearn:hasHumanAction colearn:p15_s17_h00 ;
+    colearn:hasRobotAction colearn:p15_s17_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s17_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 17, Human-Action 00" ;
+colearn:p15_s17_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s17, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
@@ -559,99 +597,103 @@ colearn:action_p15_s17_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s17 .
 
 # Define the Robot actions.
-colearn:action_p15_s17_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 17, Robot-Action 00" ;
+colearn:p15_s17_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s17, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "human" ;
     colearn:actionType "move back and forth in location" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s17 ;
-    colearn:hasNextAction colearn:action_p15_s17_a01 .
+    colearn:hasNextAction colearn:p15_s17_r01 .
 
-colearn:action_p15_s17_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 17, Robot-Action 01" ;
+colearn:p15_s17_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s17, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s17 ;
-    colearn:hasNextAction colearn:action_p15_s17_a02 ;
-    colearn:hasPreviousAction colearn:action_p15_s17_a00 .
+    colearn:hasNextAction colearn:p15_s17_r02 ;
+    colearn:hasPreviousAction colearn:p15_s17_r00 .
 
-colearn:action_p15_s17_a02 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 17, Robot-Action 02" ;
+colearn:p15_s17_r02 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s17, Robot-Action r02" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "break object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s17 ;
-    colearn:hasPreviousAction colearn:action_p15_s17_a01 .
+    colearn:hasPreviousAction colearn:p15_s17_r01 .
+
+# A new situation p15_s18 starts
+colearn:p15 colearn:hasSituation colearn:p15_s18 .
 
 # Define a situation.
-colearn:situation_p15_s18 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 18" ;
+colearn:p15_s18 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s18" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s18_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s18_ra00 .
+    colearn:hasRobotAction colearn:p15_s18_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s18_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 18, Robot-Action 00" ;
+colearn:p15_s18_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s18, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s18 ;
-    colearn:hasNextAction colearn:action_p15_s18_a01 .
+    colearn:hasNextAction colearn:p15_s18_r01 .
 
-colearn:action_p15_s18_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 18, Robot-Action 01" ;
+colearn:p15_s18_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s18, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s18 ;
-    colearn:hasNextAction colearn:action_p15_s18_a02 ;
-    colearn:hasPreviousAction colearn:action_p15_s18_a00 .
+    colearn:hasNextAction colearn:p15_s18_r02 ;
+    colearn:hasPreviousAction colearn:p15_s18_r00 .
 
-colearn:action_p15_s18_a02 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 18, Robot-Action 02" ;
+colearn:p15_s18_r02 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s18, Robot-Action r02" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "top of rock pile" ;
     colearn:isActionOf colearn:p15_s18 ;
-    colearn:hasNextAction colearn:action_p15_s18_a03 ;
-    colearn:hasPreviousAction colearn:action_p15_s18_a01 .
+    colearn:hasNextAction colearn:p15_s18_r03 ;
+    colearn:hasPreviousAction colearn:p15_s18_r01 .
 
-colearn:action_p15_s18_a03 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 18, Robot-Action 03" ;
+colearn:p15_s18_r03 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s18, Robot-Action r03" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s18 ;
-    colearn:hasPreviousAction colearn:action_p15_s18_a02 .
+    colearn:hasPreviousAction colearn:p15_s18_r02 .
+
+# A new situation p15_s19 starts
+colearn:p15 colearn:hasSituation colearn:p15_s19 .
 
 # Define a situation.
-colearn:situation_p15_s19 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 19" ;
+colearn:p15_s19 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s19" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s19_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s19_ra00 .
+    colearn:hasHumanAction colearn:p15_s19_h00 ;
+    colearn:hasRobotAction colearn:p15_s19_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s19_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 19, Human-Action 00" ;
+colearn:p15_s19_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s19, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actorType "victim" ;
     colearn:actionType "move to object" ;
@@ -660,29 +702,32 @@ colearn:action_p15_s19_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s19 .
 
 # Define the Robot actions.
-colearn:action_p15_s19_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 19, Robot-Action 00" ;
+colearn:p15_s19_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s19, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "move to object" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s19 ;
-    colearn:hasNextAction colearn:action_p15_s19_a01 .
+    colearn:hasNextAction colearn:p15_s19_r01 .
 
-colearn:action_p15_s19_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 19, Robot-Action 01" ;
+colearn:p15_s19_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s19, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actorType "victim" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s19 ;
-    colearn:hasPreviousAction colearn:action_p15_s19_a00 .
+    colearn:hasPreviousAction colearn:p15_s19_r00 .
+
+# A new situation p15_s20 starts
+colearn:p15 colearn:hasSituation colearn:p15_s20 .
 
 # Define a situation.
-colearn:situation_p15_s20 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 20" ;
+colearn:p15_s20 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s20" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "small rock" ;
     colearn:objectType "large rock" ;
@@ -690,114 +735,116 @@ colearn:situation_p15_s20 a colearn:Situation ;
     colearn:locationType "top of rock pile" ;
     colearn:locationType "on top of object" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s20_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s20_ra00 .
+    colearn:hasRobotAction colearn:p15_s20_r00 .
 
-# Define the Human actions.
 # Define the Robot actions.
-colearn:action_p15_s20_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 20, Robot-Action 00" ;
+colearn:p15_s20_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s20, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s20 ;
-    colearn:hasNextAction colearn:action_p15_s20_a01 .
+    colearn:hasNextAction colearn:p15_s20_r01 .
 
-colearn:action_p15_s20_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 20, Robot-Action 01" ;
+colearn:p15_s20_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s20, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s20 ;
-    colearn:hasNextAction colearn:action_p15_s20_a02 ;
-    colearn:hasPreviousAction colearn:action_p15_s20_a00 .
+    colearn:hasNextAction colearn:p15_s20_r02 ;
+    colearn:hasPreviousAction colearn:p15_s20_r00 .
 
-colearn:action_p15_s20_a02 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 20, Robot-Action 02" ;
+colearn:p15_s20_r02 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s20, Robot-Action r02" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s20 ;
-    colearn:hasNextAction colearn:action_p15_s20_a03 ;
-    colearn:hasPreviousAction colearn:action_p15_s20_a01 .
+    colearn:hasNextAction colearn:p15_s20_r03 ;
+    colearn:hasPreviousAction colearn:p15_s20_r01 .
 
-colearn:action_p15_s20_a03 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 20, Robot-Action 03" ;
+colearn:p15_s20_r03 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s20, Robot-Action r03" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s20 ;
-    colearn:hasPreviousAction colearn:action_p15_s20_a02 .
+    colearn:hasPreviousAction colearn:p15_s20_r02 .
+
+# A new situation p15_s21 starts
+colearn:p15 colearn:hasSituation colearn:p15_s21 .
 
 # Define a situation.
-colearn:situation_p15_s21 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 21" ;
+colearn:p15_s21 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s21" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:actorType "victim" ;
     colearn:objectType "small rock" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:locationType "on top of actor" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s21_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s21_ra00 .
+    colearn:hasHumanAction colearn:p15_s21_h00 .
 
 # Define the Human actions.
-colearn:action_p15_s21_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 21, Human-Action 00" ;
+colearn:p15_s21_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s21, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s21 ;
-    colearn:hasNextAction colearn:action_p15_s21_a01 .
+    colearn:hasNextAction colearn:p15_s21_h01 .
 
-colearn:action_p15_s21_a01 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 21, Human-Action 01" ;
+colearn:p15_s21_h01 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s21, Human-Action h01" ;
     colearn:actorType "human" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s21 ;
-    colearn:hasNextAction colearn:action_p15_s21_a02 ;
-    colearn:hasPreviousAction colearn:action_p15_s21_a00 .
+    colearn:hasNextAction colearn:p15_s21_h02 ;
+    colearn:hasPreviousAction colearn:p15_s21_h00 .
 
-colearn:action_p15_s21_a02 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 21, Human-Action 02" ;
+colearn:p15_s21_h02 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s21, Human-Action h02" ;
     colearn:actorType "human" ;
     colearn:actorType "victim" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "on top of actor" ;
     colearn:isActionOf colearn:p15_s21 ;
-    colearn:hasNextAction colearn:action_p15_s21_a03 ;
-    colearn:hasPreviousAction colearn:action_p15_s21_a01 .
+    colearn:hasNextAction colearn:p15_s21_h03 ;
+    colearn:hasPreviousAction colearn:p15_s21_h01 .
 
-colearn:action_p15_s21_a03 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 21, Human-Action 03" ;
+colearn:p15_s21_h03 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s21, Human-Action h03" ;
     colearn:actorType "human" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "small rock" ;
     colearn:locationType "left side of field" ;
     colearn:isActionOf colearn:p15_s21 ;
-    colearn:hasPreviousAction colearn:action_p15_s21_a02 .
+    colearn:hasPreviousAction colearn:p15_s21_h02 .
 
-# Define the Robot actions.
+# A new situation p15_s22 starts
+colearn:p15 colearn:hasSituation colearn:p15_s22 .
+
 # Define a situation.
-colearn:situation_p15_s22 a colearn:Situation ;
-    rdfs:label "Participant p15, Situation 22" ;
+colearn:p15_s22 a colearn:Situation ;
+    rdfs:label "Participant p15, Situation s22" ;
     colearn:isSituationOf colearn:p15 ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
-    colearn:hasHumanAction colearn:action_p15_p15_s22_ha00 ;
-    colearn:hasRobotAction colearn:action_p15_p15_s22_ra00 .
+    colearn:hasHumanAction colearn:p15_s22_h00 ;
+    colearn:hasRobotAction colearn:p15_s22_r00 .
 
 # Define the Human actions.
-colearn:action_p15_s22_a00 a colearn:HumanAction ;
-    rdfs:label "Participant p15, Situation 22, Human-Action 00" ;
+colearn:p15_s22_h00 a colearn:HumanAction ;
+    rdfs:label "Participant p15, Situation s22, Human-Action h00" ;
     colearn:actorType "human" ;
     colearn:objectType "large rock" ;
     colearn:locationType "on top of object" ;
@@ -805,21 +852,21 @@ colearn:action_p15_s22_a00 a colearn:HumanAction ;
     colearn:isActionOf colearn:p15_s22 .
 
 # Define the Robot actions.
-colearn:action_p15_s22_a00 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 22, Robot-Action 00" ;
+colearn:p15_s22_r00 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s22, Robot-Action r00" ;
     colearn:actorType "robot" ;
     colearn:actionType "pick up object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "left side of rock pile" ;
     colearn:isActionOf colearn:p15_s22 ;
-    colearn:hasNextAction colearn:action_p15_s22_a01 .
+    colearn:hasNextAction colearn:p15_s22_r01 .
 
-colearn:action_p15_s22_a01 a colearn:RobotAction ;
-    rdfs:label "Participant p15, Situation 22, Robot-Action 01" ;
+colearn:p15_s22_r01 a colearn:RobotAction ;
+    rdfs:label "Participant p15, Situation s22, Robot-Action r01" ;
     colearn:actorType "robot" ;
     colearn:actionType "drop object in location" ;
     colearn:objectType "large rock" ;
     colearn:locationType "right side of field" ;
     colearn:isActionOf colearn:p15_s22 ;
-    colearn:hasPreviousAction colearn:action_p15_s22_a00 .
+    colearn:hasPreviousAction colearn:p15_s22_r00 .
 
