@@ -8,12 +8,14 @@ sort of data. This data is not necessarily a graph type of data. So I convert it
 data.
 
 **TODO-1: The excel files had more than one sheet per file. pandas dataframe only use
-the first sheet. Ask Emma if it's necessary to use other sheets as well.**
-Answer Emma: Using the first sheet is fine. The second sheet is just a different ordering of the same CPs, made for analysis purposes.
+the first sheet. Ask Emma if it's necessary to use other sheets as well.** Answer Emma:
+Using the first sheet is fine. The second sheet is just a different ordering of the same
+CPs, made for analysis purposes.
 
 **TODO-2: Next time I get this data, find a way to get it raw TypeDB data, not an excel
-file. It wasn't so easy to parse the excel spreadsheets.**
-Answer Emma: Yes, I'll make sure you have that. I will try to send you some raw TypeDB data either today or beginning of next week.
+file. It wasn't so easy to parse the excel spreadsheets.** Answer Emma: Yes, I'll make
+sure you have that. I will try to send you some raw TypeDB data either today or
+beginning of next week.
 
 ## OWL/RDF ontology (schema)
 
@@ -177,8 +179,12 @@ For example, the sitaution node `p01_s00` has two `objectType`s and two `locatio
 At the moemnt, there is no order in them, so the RDF doesn't know which `locationType`
 was used with which `objectType`.
 
-**TODO-4: Ask Emma if the above can be problemantic.**
-Answer Emma: In the example the object type is the same (Large Rock), therefore, it is fine. Otherwise, it would not be. If a participant for example specifies that there should be a Large Rock at Top of Rock pile and Small Rock at Bottom of Rock pile, that is something you want to know. Therefore, in the new version of the GUI, there are several boxes in the situation description as well, such that each box can contain one starting condition.
+**TODO-4: Ask Emma if the above can be problemantic.** Answer Emma: In the example the
+object type is the same (Large Rock), therefore, it is fine. Otherwise, it would not be.
+If a participant for example specifies that there should be a Large Rock at Top of Rock
+pile and Small Rock at Bottom of Rock pile, that is something you want to know.
+Therefore, in the new version of the GUI, there are several boxes in the situation
+description as well, such that each box can contain one starting condition.
 
 As far as I know, the human actions and the robot actions that share the same suffix are
 supposed to happen at the same time. For example, `p01_s00_h00` happens while
@@ -188,8 +194,10 @@ this data was collected in 2022, where there were no two separate columns for hu
 robot, but the new data in 2024 won't have this problem. That is, the number of human
 actions is always equal to that of robot acitons.
 
-**TODO-5: Ask Emma if the above is true.**
-Answer Emma: The number of actions is not always the same, but there is an explicit ordering. For example, you can have a robot action in position 0, a human and a robot action in position 1 and just a robot action is position 2.
+**TODO-5: Ask Emma if the above is true.** Answer Emma: The number of actions is not
+always the same, but there is an explicit ordering. For example, you can have a robot
+action in position 0, a human and a robot action in position 1 and just a robot action
+is position 2.
 
 ## Graph learning
 
@@ -211,8 +219,11 @@ reward)_. From the contextual bandit point of view, these tuples can be consider
 (state, action, reward), and we can learn an optimal policy from them.
 
 **TODO-6: Double check with Emma if obtaining (situation, human-robot actions, reward)
-is easy.**
-Answer Emma: Easy is relative here. It is easy to obtain the Q-table for the contextual bandit (this is logged at the end of every round of the experiment). Currently, I currently don't log individual rewards obtained. I also wonder what you mean with 'optimal policy' here, as it is not really possible to know what is optimal and whether it is reached. 
+is easy.** Answer Emma: Easy is relative here. It is easy to obtain the Q-table for the
+contextual bandit (this is logged at the end of every round of the experiment).
+Currently, I currently don't log individual rewards obtained. I also wonder what you
+mean with 'optimal policy' here, as it is not really possible to know what is optimal
+and whether it is reached.
 
 _(situation, human-robot actions)_ pairs are very likely to be duplicate. However, it's
 likely that the participants have described the same situation and human-robot actions
@@ -280,8 +291,8 @@ this yet. The graph learning comes first. The graph learning will be done in RDF
 the GUI between the human and the machine still uses TypeDB. The code somewhere there.
 
 **TODO-7: Ask Emma how I can start this. Perhaps she can point me to some specific lines
-of her code.**
-Answer Emma: I'm not exactly sure what you're asking me here, we should probably talk about it.
+of her code.** Answer Emma: I'm not exactly sure what you're asking me here, we should
+probably talk about it.
 
 ## Nice-to-haves
 
