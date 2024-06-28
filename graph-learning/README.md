@@ -310,4 +310,4 @@ simple app server only when it's being used. This is very cheap.
 
 ## Author
 
-Taewoon Kim (taewoon@humem.ai)
+[Taewoon Kim](https://taewoon.kim/)
