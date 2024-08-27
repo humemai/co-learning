@@ -85,6 +85,10 @@ class RobotPartner(AgentBrain):
 
         self.database_name = None
 
+        self.wait_message_sent = False
+
+        self.object_absent_sent = False
+
         # Code that ensures backed up q-tables are retrieved in case of crash
         print("Retrieving backed up q-tables...")
         try:
@@ -360,10 +364,15 @@ class RobotPartner(AgentBrain):
 
         chosen_object = small_obj[y_loc_list.index(min(y_loc_list))]    # Pick object with smallest y
         object_loc = self.state[chosen_object]['location']
+        self.navigator.reset_full()
 
         # Add move action to action list
+        route_actions = []
         self.navigator.add_waypoint(object_loc)
-        route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+        print(self.navigator._Navigator__get_route(self.state_tracker))
+        if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+            route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+            route_actions = list(route_in_between)
         for action in route_actions:
             self.actionlist[0].append(action)
             self.actionlist[1].append({})
@@ -423,10 +432,15 @@ class RobotPartner(AgentBrain):
 
         if object_loc is None:
             return
+        self.navigator.reset_full()
 
         # Add move action to action list
+        route_actions = []
         self.navigator.add_waypoint(object_loc)
-        route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+        print(self.navigator._Navigator__get_route(self.state_tracker))
+        if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+            route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+            route_actions = list(route_in_between)
         for action in route_actions:
             self.actionlist[0].append(action)
             self.actionlist[1].append({})
@@ -458,10 +472,12 @@ class RobotPartner(AgentBrain):
 
             if "vert" in carrying_obj:
                 obj_type = 'vert'
+                if chosen_loc is not None and chosen_loc[1] > 7:
+                    chosen_loc = (chosen_loc[0], 7)
             if "long" in carrying_obj:
                 obj_type = 'long'
-                if chosen_loc is not None and chosen_loc[0] > 2:
-                    chosen_loc[0] = 2
+                if chosen_loc is not None and chosen_loc[0] > 1 and chosen_loc[0] < 5:
+                    chosen_loc = (1, chosen_loc[1])
 
             # Choose location for dropping
             if chosen_loc is None:
@@ -480,9 +496,15 @@ class RobotPartner(AgentBrain):
                     x_loc = random.choice(possible_xloc)
                     chosen_loc = (x_loc, agent_loc[1]-2)
 
+            self.navigator.reset_full()
+
             # Add move action to action list
-            self.navigator.add_waypoint(chosen_loc)         # Add some code that searches for an empty spot out of the field
-            route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+            route_actions = []
+            self.navigator.add_waypoint(chosen_loc)
+            print(self.navigator._Navigator__get_route(self.state_tracker))
+            if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+                route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+                route_actions = list(route_in_between)
             for action in route_actions:
                 self.actionlist[0].append(action)
                 self.actionlist[1].append({})
@@ -530,9 +552,15 @@ class RobotPartner(AgentBrain):
             if self.state[part]['bound_to'] == large_name:
                 large_obj.append(part)
 
+        self.navigator.reset_full()
+
         # Add move action to action list
+        route_actions = []
         self.navigator.add_waypoint(object_loc)
-        route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+        print(self.navigator._Navigator__get_route(self.state_tracker))
+        if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+            route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+            route_actions = list(route_in_between)
         for action in route_actions:
             self.actionlist[0].append(action)
             self.actionlist[1].append({})
@@ -549,9 +577,14 @@ class RobotPartner(AgentBrain):
     def wait_action(self, location):
         # Check if there is a specific location in which we should wait
         if location is not None:
+            self.navigator.reset_full()
             # Then add move actions first
+            route_actions = []
             self.navigator.add_waypoint(location)
-            route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+            print(self.navigator._Navigator__get_route(self.state_tracker))
+            if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+                route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+                route_actions = list(route_in_between)
             for action in route_actions:
                 self.actionlist[0].append(action)
                 self.actionlist[1].append({})
@@ -565,9 +598,14 @@ class RobotPartner(AgentBrain):
     def move_back_forth_action(self, location):
         # Check if there is a specific location in which we should move
         if location is not None:
+            self.navigator.reset_full()
             # Then add move actions to this location first
+            route_actions = []
             self.navigator.add_waypoint(location)
-            route_actions = list(self.navigator._Navigator__get_route(self.state_tracker).values())
+            print(self.navigator._Navigator__get_route(self.state_tracker))
+            if isinstance(self.navigator._Navigator__get_route(self.state_tracker), dict):
+                route_in_between = self.navigator._Navigator__get_route(self.state_tracker).values()
+                route_actions = list(route_in_between)
             for action in route_actions:
                 self.actionlist[0].append(action)
                 self.actionlist[1].append({})
@@ -839,6 +877,7 @@ class RobotPartner(AgentBrain):
                 self.actionlist = [[], []]
                 self.navigator.reset_full()     # Reset navigator to make sure there are no remaining waypoints
                 self.cp_actions = []
+                self.object_absent_sent = False
                 # Reset progress variables
                 self.record_progress(True)
             else:
@@ -1161,10 +1200,25 @@ class RobotPartner(AgentBrain):
                 # The robot needs to translate the current_robot_action to an actual action
                 #print('We need to translate the current action to an actual action.')
                 self.translate_action(self.current_robot_action, state)
+                if self.wait_message_sent:
+                    self.wait_message_sent = False
             elif self.current_human_action:
                 # If the robot is not doing anything, but the human is supposed to do something, check if they did it yet
                 #print("Check if the human did their task")
                 if len(self.past_human_actions) > 0:
+                    # Formulate a message in case the human didn't do their action yet
+                    msg = None
+                    if 'resource' in self.current_human_action.keys() and 'location' in self.current_human_action.keys():
+                        obj_tograb = self.current_human_action['resource']['size']
+                        msg = f"Waiting for human to {self.current_human_action['task']['task_name']} a {obj_tograb} rock at {self.current_human_action['location']['range']}"
+                    elif 'location' in self.current_human_action.keys():
+                        msg = f"Waiting for human to {self.current_human_action['task']['task_name']} at {self.current_human_action['location']['range']}"
+                    elif 'resource' in self.current_human_action.keys():
+                        obj_tograb = self.current_human_action['resource']['size']
+                        msg = f"Waiting for human to {self.current_human_action['task']['task_name']} a {obj_tograb} rock"
+                    else:
+                        msg = f"Waiting for human to {self.current_human_action['task']['task_name']}"
+
                     if self.current_human_action['task']['task_name'] in np.array([val[0] for val in self.past_human_actions]):
                         # This means that the action we're looking for is in the past 5 actions of the human.
                         # Now we need to check if the location is also present
@@ -1188,10 +1242,35 @@ class RobotPartner(AgentBrain):
                             # If the CP actions list ends up empty here, we should do a reward update
                             if len(self.cp_actions) == 0 and self.executing_cp in self.cp_list:
                                 self.reward_update_cps()
+                        else:
+                            # The human did the action but not in the right location
+                            # Check if maybe there wasn't a location specified
+                            if 'location' in self.current_human_action.keys():
+                                if not self.wait_message_sent:
+                                    self.send_message(Message(content=msg, from_id=self.agent_id, to_id=None))
+                                    self.wait_message_sent = True
+                            else:
+                                # No location specified so we can count the action as done, remove and continue
+                                if self.current_human_action in self.cp_actions:
+                                    self.cp_actions.remove(self.current_human_action)
+                                self.current_human_action = None
+                                # Also empty the past human actions list as we're moving to a new cycle
+                                self.past_human_actions = []
+
+                                # If the CP actions list ends up empty here, we should do a reward update
+                                if len(self.cp_actions) == 0 and self.executing_cp in self.cp_list:
+                                    self.reward_update_cps()
+                    else:
+                        # The human did not yet do the action
+                        if not self.wait_message_sent:
+                            self.send_message(Message(content=msg, from_id=self.agent_id, to_id=None))
+                            self.wait_message_sent = True
                 # In the meantime, the robot should idle and wait for the human to finish their task
                 #self.wait_action(None)
             else:
                 print("Find the next actions")
+                if self.object_absent_sent:
+                    self.object_absent_sent = False
                 # If none of the agents have something to do, check for the next tasks
                 order_values = []
                 # Store and/or retrieve what position in the CP we're at (which action)
@@ -1469,6 +1548,7 @@ class RobotPartner(AgentBrain):
                         else:
                             # There is no such object, can't perform this action
                             print("Can't perform this action, object doesn't exist.")
+                            self.communicate_object_absent(object_size, task_location)
                     elif isinstance(relevant_objects, list):
                         objects_right_location= []
                         # It is a list, we'll need to loop through
@@ -1480,10 +1560,16 @@ class RobotPartner(AgentBrain):
                             elif task_location in self.translate_location(object['obj_id'], object_size):
                                 # It is the same, this is an object we can choose!
                                 objects_right_location.append(object)
-                        self.pickup_large_action(objects_right_location, state, state[self.agent_id]['location'])
+                        if len(objects_right_location) > 0:
+                            self.pickup_large_action(objects_right_location, state, state[self.agent_id]['location'])
+                        else:
+                            # There is no such object, can't perform this action
+                            print("Can't perform this action, object doesn't exist.")
+                            self.communicate_object_absent(object_size, task_location)
                 else:
                     # There is no such object, can't perform this action
                     print("Can't perform this action, object doesn't exist.")
+                    self.communicate_object_absent(object_size, task_location)
                 return
             elif 'small' in object_size:
                 # We have to pick up a small rock
@@ -1501,6 +1587,7 @@ class RobotPartner(AgentBrain):
                         else:
                             # There is no such object, can't perform this action
                             print("Can't perform this action, object doesn't exist.")
+                            self.communicate_object_absent(object_size, task_location)
                     elif isinstance(relevant_objects, list):
                         objects_right_location= []
                         # It is a list, we'll need to loop through
@@ -1516,6 +1603,7 @@ class RobotPartner(AgentBrain):
                 else:
                     # There is no such object, can't perform this action
                     print("Can't perform this action, object doesn't exist.")
+                    self.communicate_object_absent(object_size, task_location)
                 return
         elif 'Stand still' in task_name:
             # We should move to the location specified and stand still there
@@ -1544,6 +1632,7 @@ class RobotPartner(AgentBrain):
                     else:
                         # There is no such object, can't perform this action
                         print("Can't perform this action, object doesn't exist.")
+                        self.communicate_object_absent('large', task_location)
                 elif isinstance(relevant_objects, list):
                     objects_right_location = []
                     # It is a list, we'll need to loop through
@@ -1556,6 +1645,7 @@ class RobotPartner(AgentBrain):
             else:
                 # There is no such object, can't perform this action
                 print("Can't perform this action, object doesn't exist.")
+                self.communicate_object_absent('large', task_location)
             return
         elif 'Move back and forth' in task_name:
             # Add the move back and forth action to the actionlist
@@ -1745,17 +1835,17 @@ class RobotPartner(AgentBrain):
             poss_yloc = list(range(0, 10))
             for x in poss_xloc:
                 for y in poss_yloc:
-                    if self.state[{"location": (x, y)}] is not None:
+                    if self.state[{"location": (x, y)}] is None:
                         poss_coordinates.append((x, y))
             coordinates = random.choice(poss_coordinates)
         elif location == 'Right side of rock pile':
             coordinates = ()
             poss_coordinates = []
-            poss_xloc = list(range(5, 9))
+            poss_xloc = list(range(10, 14))
             poss_yloc = list(range(0, 10))
             for x in poss_xloc:
                 for y in poss_yloc:
-                    if self.state[{"location": (x, y)}] is not None:
+                    if self.state[{"location": (x, y)}] is None:
                         poss_coordinates.append((x, y))
             coordinates = random.choice(poss_coordinates)
         elif location == 'Left side of field':
@@ -1788,7 +1878,7 @@ class RobotPartner(AgentBrain):
             elif 'Small' in location:
                 poss_locations = []
                 dist_list = []
-                small_objs = self.state[{'name': 'rock1'}] + self.state[{'bound_to': None}]
+                small_objs = self.state[{'name': 'rock1'}] #+ self.state[{'bound_to': None}]
                 if small_objs is not None:
                     # There are small objects to be on top of
                     for obj in small_objs:
@@ -2155,9 +2245,9 @@ class RobotPartner(AgentBrain):
                 print("New end conditions:")
                 print(self.end_conditions)
                 # Also delete from q-tables
-                if cp_name not in self.cp_list:
-                    self.q_table_cps.drop(cp_name, axis=1, inplace=True)
-                    self.q_table_cps_runs.drop(cp_name, axis=1, inplace=True)
+                #if cp_name not in self.cp_list:
+                #    self.q_table_cps.drop(cp_name, axis=1, inplace=True)
+                #    self.q_table_cps_runs.drop(cp_name, axis=1, inplace=True)
             elif isinstance(message, dict) and 'cp_edit' in message:
                 # An existing CP was edited, double check that it was already in the list
                 cp_name = message['cp_edit']
@@ -2290,7 +2380,7 @@ class RobotPartner(AgentBrain):
                     msg = f"Now executing {current_action['task']['task_name']} a {obj_tograb} rock at {current_action['location']['range']}"
                 elif 'location' in current_action.keys():
                     msg = f"Now executing {current_action['task']['task_name']} at {current_action['location']['range']}"
-                elif current_action['resource']:
+                elif 'resource' in current_action.keys():
                     obj_tograb = current_action['resource']['size']
                     msg = f"Now executing {current_action['task']['task_name']} a {obj_tograb} rock"
                 else:
@@ -2301,6 +2391,19 @@ class RobotPartner(AgentBrain):
         # Communicate if it is a pick up, break or drop action
         self.send_message(Message(content= msg, from_id=self.agent_id, to_id=None))
 
+        return
+
+    def communicate_object_absent(self, object, location):
+        msg = None
+
+        if object is not None and location is not None:
+            msg = f"There is no {object} rock at {location}"
+        elif object is not None:
+            msg = f"There is no {object} rock"
+
+        if not self.object_absent_sent:
+            self.send_message(Message(content=msg, from_id=self.agent_id, to_id=None))
+            self.object_absent_sent = True
         return
 
     def human_standstill(self):

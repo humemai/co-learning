@@ -44,6 +44,7 @@ class BreakObject(Action):
             # Get a random rock image and change img_name to that image
             rock_img_property = random.choice(rock_imgs)
             env_obj.change_property('img_name', rock_img_property)
+            env_obj.change_property('name', 'rock1')
 
 
         if not succeeded:

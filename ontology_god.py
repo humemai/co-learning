@@ -26,6 +26,8 @@ class OntologyGod(AgentBrain):
 
         self.database_name = None
 
+        self.reward_god = None
+
     def initialize(self):
         self.state_tracker = StateTracker(agent_id=self.agent_id)
 
@@ -73,6 +75,7 @@ class OntologyGod(AgentBrain):
         # Remove all god agents
         remove_list.append('gravitygod')
         remove_list.append('rewardgod')
+        self.reward_god = self.state[{'class_inheritance': "RewardGod"}]
 
         # Remove helper objects (avatar agents, goal reached image)
         remove_list.append('human')
@@ -106,6 +109,11 @@ class OntologyGod(AgentBrain):
 
         #if self.agent_properties['cp_list_html'] is None:
         self.agent_properties['cp_list_html'] = self.cp_list_html
+
+        # Find the rewardgod. If we're in the practice scenario (level 0), return here
+        level = self.reward_god['level']
+        if level == 0:
+            return action, action_kwargs
 
         # If there are messages, deal with them, and send to TypeDB
         if self.received_messages:

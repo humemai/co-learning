@@ -298,14 +298,14 @@ function draw(state, world_settings, new_messages, accessible_chatrooms, new_tic
             pause_done = true;
         }
     }
-    else if (state['rewardgod']['goal_reached'] && state['rewardgod']['level'] == 0){
-        console.log("Goal is reached!");
-        if (!pause_done){
-            send_api_message("pause");
-            pause_done = true;
-        }
-        setTimeout(send_api_message("start"), 0)
-    }
+    //else if (state['rewardgod']['goal_reached'] && state['rewardgod']['level'] == 0){
+    //    console.log("Goal is reached!");
+    //    if (!pause_done){
+    //        send_api_message("pause");
+    //        pause_done = true;
+    //    }
+    //    setTimeout(send_api_message("start"), 0)
+    //}
 
     if (state['final_goal']['goal_reached']){
         $("#endscreen").css("display", "block");

@@ -102,7 +102,7 @@
             </div>
             <h1 class="cp_text">What we do</h1>
             <h2 class="cp_text">In this situation, we did this:</h2>
-            <div class="ex_box" id="example_actions"><div class="invulvakje" style="background-color:#FFFFFF">You can use these types of items:</div><div class="invulvakje" style="background-color:#BCE2F0"><i>action</i></div><div class="invulvakje"><i>object</i></div><div class="invulvakje inv_loc"><i>location</i></div></div>
+            <div class="ex_box" id="example_actions"><div class="invulvakje" style="background-color:#FFFFFF">You can use these types of items:</div><div class="invulvakje" style="background-color:#BCE2F0"><i>action</i></div><div class="invulvakje"><i>object</i></div><div class="invulvakje inv_loc"><i>location</i></div><div class="invulvakje" style="background-color:#EFCEBD"><i>actor</i></div></div>
             <div class="actiontarget_container">
                 <div class="drop-targets" id="whatwedo">
                     <div class="agent_name" id="ag_1">Human</div>
@@ -583,8 +583,21 @@
           block_to_insert.className = draggableElement.className;
           block_to_insert.innerHTML = draggableElement.innerHTML;
           block_to_insert.setAttribute('clonable','false');
-          dropzoneElement.appendChild(block_to_insert);
-          nr_drops = nr_drops +1;
+
+          if (block_to_insert.className.includes('task') & dropzoneElement.className.includes('box_situ')) {
+            window.alert("You cannot use actions in the situation description. \n \nThe situation description (situation when the actions start) describes a state of the environment. If you want to describe that an action follows another action, please use the different boxes in the action description (what we do).");
+          }
+          else if (block_to_insert.className.includes('task') & dropzoneElement.innerHTML.includes('task')) {
+            window.alert("You can only add one action per grey box. Please use a new grey box for each separate action.");
+          }
+          else {
+            dropzoneElement.appendChild(block_to_insert);
+            nr_drops = nr_drops +1;
+            // Check if the blocks all fit in the situation container, otherwise make it bigger
+            if (dropzoneElement.innerHTML.length > 230 & dropzoneElement.className.includes('box_situ')) {
+                dropzoneElement.style.height = "100px";
+            }
+          }
           //add code that saves that this object has been dropped in this block and that snaps it to position?
         },
         ondropdeactivate: function (event) {
