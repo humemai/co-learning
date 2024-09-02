@@ -247,3 +247,28 @@ This modified verion kinda simplifies things a bit, but then some restrictions f
   - pick up: The head of this relation has to be "robot" or "human". The tail of this relation has to be "large rock", "small rock", or "brown rock".
   - drop: The head of this relation has to be "robot" or "human". The tail of this relation has to be "large rock", "small rock", or "brown rock".
   - break: The head of this relation has to be "robot" or "human". The tail of this relation has to be "large rock", "small rock", or "brown rock".
+
+## Data
+
+I'll use [`./user-data/new`](./user-data/new)
+
+- `all_cp_messages.csv`
+  - This shows when the participants have added / edited / deleted CPs.
+  - I have to parse the html
+  - Perhaps the latest CP makes most sense, but it's up to you to decide.
+- `cp_execution.csv`
+  - This shows when the CPs are executed?
+  - 
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn,
+inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+1. Run `make test && make style && make quality` in the root repo directory, to ensure
+   code quality.
+1. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+1. Push to the Branch (`git push origin feature/AmazingFeature`)
+1. Open a Pull Request
