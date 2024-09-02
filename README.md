@@ -1,6 +1,7 @@
-# README for Tae
+# Co-learning
 
 This is my understanding of what Emma's doing.
+[Emma's youtube video](https://www.youtube.com/watch?v=zdgQ9XPaWXw) helps.
 
 ## Dependencies
 
@@ -8,18 +9,54 @@ This is my understanding of what Emma's doing.
 - pip install matrx==2.3.0
 - pip install typedb-client
 - typedb-server=2.18.0
--
+  - sudo apt install typedb-bin=2.18.0
+  - sudo apt install typedb-server=2.18.0
+  - sudo apt install typedb-console=2.18.0
+  - Download https://cloudsmith.io/~typedb/repos/public-release/packages/detail/deb/typedb-studio/2.18.0-1/a=amd64;xc=main;d=any-distro%252Fany-version;t=binary/
+
+## Running typedb studio
+
+- First run server `typedb server` at 0.0.0.0:1729
+- `nohup sh -c 'GDK_SCALE=2 /opt/typedb-studio/bin/TypeDB\ Studio' &` helps when you want to zoom in.
+- Create database `CP_ontology`
+- Write `CP_ontology_schema_corrected.tql` as schema
+- Write `Basic_instances.tql` as data
+
+## Running `main.py`
+
+- Which scenario do you want to start with?
+  - Choose numbers from 0 to 8.
+  - 0 is the dummy round. 1 to 4 is the ones with brown rock. 5 to 8 is the ones without
+- Which participant number do you want to use?
+  - This is the port number opeend at your localhost
+- Open up the web browswer with the port number:
+  - http://localhost:3000/human-agent/human_selector
+
+### Using keyboard
+
+Use the arrow keys to move, B to select, and N to drop.
+
+### Understanding the rock layout
+
+![alt text](readme-images/image-3.png)
+![alt text](readme-images/image-4.png)
+![alt text](readme-images/image-5.png)
+![alt text](readme-images/image-6.png)
+![alt text](readme-images/image-7.png)
+![alt text](readme-images/image-8.png)
+![alt text](readme-images/image-9.png)
+![alt text](readme-images/image-10.png)
 
 ## Agent's decision tree
 
-![Alt text](tae-images/decision-tree.png)
+![Alt text](readme-images/decision-tree.png)
 
 Collaborations patterns (CPs) are learned by contextual bandits (CBs). Basic behavrior
 is learned by by RL (Q-learning).
 
 ## State representations
 
-![Alt text](tae-images/image.png)
+![Alt text](readme-images/image.png)
 
 Emma's original state representations were a vector whose length is 18, where every
 element was one-hot value. The size of the state space can be then $2^{18}$, which is
@@ -65,7 +102,7 @@ choose). This is not so likely since the users will write fine-grained CPs.
 
 This experiment differs from Emma's first co-learning experiments (Becoming Team
 Members: Identifying Interaction Patterns of Mutual Adaptation for Human-Robot
-Co-Learning): ![Alt text](tae-images/image-1.png) ![Alt text](tae-images/image-2.png)
+Co-Learning): ![Alt text](readme-images/image-1.png) ![Alt text](readme-images/image-2.png)
 
 - State / action spaces are different.
   - The first experiment had 4 states (also called phases back then). It also had 3
@@ -86,8 +123,7 @@ In the phase 2, the agent can take advantage of the CPs that were collected in t
 
 ### Entities and relations
 
-<!-- ![alt text](image.png) -->
-![alt text](image-1.png)
+![alt text](readme-images/image-0.png)
 
 This is the only vocabulary used. "Robot", "Human", and "Victim" can only be used to
 describe situations where they work as objects (yellow). They can't be used as part of
