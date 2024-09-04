@@ -256,9 +256,12 @@ I'll use [`./user-data/new`](./user-data/new)
   - I have to parse the html
   - Perhaps the latest CP makes most sense, but it's up to you to decide.
 - `cp_execution.csv`
-  - This shows when the CPs are executed?
+  - The column to the right of the CP (string value) is the amount of ticks that it
+    lasted. The maximum is 3020, which is about 150 seconds.
+  - `"False"` is not CP but the basic behavior, cuz there is no matching CP to run.
 - `data_aggregate_complete.csv`
   - `"Time_score"` is the objective metric. The lower it is, the better it is.
+    - $$Time\_score = corrected\_tick + 100 * remaining\_rocks$$
   - As for the `Condition`, `"C3"` is what matters to me since this is the GUI with the
     CP.
 
