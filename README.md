@@ -8,9 +8,7 @@ This is my understanding of what Emma's doing.
 - python3.8
 - pip install matrx==2.3.0
 - pip install typedb-client
-- sudo apt install typedb-bin=2.18.0
-- sudo apt install typedb-server=2.18.0
-- sudo apt install typedb-console=2.18.0
+- sudo apt install typedb-bin=2.18.0 typedb-server=2.18.0 typedb-console=2.18.0
 - Download https://cloudsmith.io/~typedb/repos/public-release/packages/detail/deb/typedb-studio/2.18.0-1/a=amd64;xc=main;d=any-distro%252Fany-version;t=binary/
 
 ## Running typedb studio
