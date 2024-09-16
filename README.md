@@ -247,7 +247,7 @@ This modified verion kinda simplifies things a bit, but then some restrictions f
 
 ## Data
 
-I'll use [`./user-data/new`](./user-data/new)
+I'll use [`./user-raw-data/new`](./user-raw-data/new)
 
 - `all_cp_messages.csv`
   - This shows when the participants have added / edited / deleted CPs.

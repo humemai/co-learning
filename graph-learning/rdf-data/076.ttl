@@ -1,0 +1,41 @@
+@prefix co_learning: <http://example.org/co_learning#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+co_learning:CP76 a co_learning:CollaborationPattern ;
+    co_learning:hasActionHuman co_learning:ActionHuman76_0 ;
+    co_learning:hasActionRobot co_learning:ActionRobot76_0 ;
+    co_learning:hasCPLabel "Break Rock"^^xsd:string ;
+    co_learning:hasCPNum 76 ;
+    co_learning:hasParticipantNumber 4089 ;
+    co_learning:hasRoundNumber 2 ;
+    co_learning:hasSituation co_learning:Situation76_0 ;
+    co_learning:hasTicksLasted 812 ;
+    co_learning:hasTimeScore 5100 .
+
+co_learning:ActionHuman76_0 a co_learning:ActionHuman ;
+    co_learning:hasNextActionHuman co_learning:ActionHuman76_1 .
+
+co_learning:ActionHuman76_1 a co_learning:ActionHuman ;
+    co_learning:hasNextActionHuman co_learning:ActionHuman76_2 .
+
+co_learning:ActionHuman76_2 a co_learning:ActionHuman .
+
+co_learning:ActionRobot76_0 a co_learning:ActionRobot ;
+    co_learning:hasAction "Move to <Object>" ;
+    co_learning:hasNextActionRobot co_learning:ActionRobot76_1 ;
+    co_learning:hasObject "Large rock" .
+
+co_learning:ActionRobot76_1 a co_learning:ActionRobot ;
+    co_learning:hasAction "Break <object> in <location>" ;
+    co_learning:hasNextActionRobot co_learning:ActionRobot76_2 ;
+    co_learning:hasObject "Large rock" .
+
+co_learning:ActionRobot76_2 a co_learning:ActionRobot .
+
+co_learning:Situation76_0 a co_learning:Situation ;
+    co_learning:hasLocation "Top of rock pile" ;
+    co_learning:hasNextSituation co_learning:Situation76_1 ;
+    co_learning:hasObject "Large rock" .
+
+co_learning:Situation76_1 a co_learning:Situation .
+
