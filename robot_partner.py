@@ -941,6 +941,7 @@ class RobotPartner(AgentBrain):
                     # Several CPs hold. We need a method to choose between them.
                     print("Choose an appropriate CP:")
                     chosen_cp = self.choose_cp_from_list(cps_hold)
+                    print("Chosen CP: " + chosen_cp)
                     msg = f"I will now follow the Collaboration Pattern {chosen_cp}."
                     self.send_message(Message(content=msg, from_id=self.agent_id, to_id=None))
                     self.executing_cp = chosen_cp
@@ -1536,6 +1537,7 @@ class RobotPartner(AgentBrain):
                     # If hands are too full, drop first to make space
                     if len(state[self.agent_id]['is_carrying']) > 0:
                         self.drop_action(state, None)
+                        self.delay_cp_reset = True
                         return
                     # It exists! Translate and check locations
                     if isinstance(relevant_objects, dict):
