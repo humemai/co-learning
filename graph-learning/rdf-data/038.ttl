@@ -4,48 +4,43 @@
 co_learning:CP38 a co_learning:CollaborationPattern ;
     co_learning:hasActionHuman co_learning:ActionHuman38_0 ;
     co_learning:hasActionRobot co_learning:ActionRobot38_0 ;
-    co_learning:hasCPLabel "Decent"^^xsd:string ;
+    co_learning:hasCPLabel "top brown test"^^xsd:string ;
     co_learning:hasCPNum 38 ;
-    co_learning:hasParticipantNumber 4083 ;
-    co_learning:hasRoundNumber 3 ;
+    co_learning:hasParticipantNumber 4081 ;
+    co_learning:hasRemainingRocks 37 ;
+    co_learning:hasRemainingTime 3000 ;
+    co_learning:hasRoundNumber 7 ;
     co_learning:hasSituation co_learning:Situation38_0 ;
-    co_learning:hasTicksLasted 932 ;
-    co_learning:hasTimeScore 1355 .
+    co_learning:hasTicksLasted 3018 ;
+    co_learning:hasTimeStamp "2024-05-07T11:31:16"^^xsd:dateTime ;
+    co_learning:hasUnixTimeStamp 1715074276 ;
+    co_learning:hasVictimHarm 0 .
 
 co_learning:ActionHuman38_0 a co_learning:ActionHuman ;
-    co_learning:hasAction "Pick up <object> in <location>" ;
-    co_learning:hasLocation "<Right> side of rock pile" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman38_1 ;
-    co_learning:hasObject "Small rock" .
+    co_learning:hasAction "Stand still in <location>" ;
+    co_learning:hasLocation "Top of rock pile" ;
+    co_learning:hasNextActionHuman co_learning:ActionHuman38_1 .
 
 co_learning:ActionHuman38_1 a co_learning:ActionHuman ;
-    co_learning:hasAction "Drop <object> in <location>" ;
-    co_learning:hasLocation "<Left> side of field" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman38_2 ;
-    co_learning:hasObject "Small rock" .
+    co_learning:hasNextActionHuman co_learning:ActionHuman38_2 .
 
 co_learning:ActionHuman38_2 a co_learning:ActionHuman .
 
 co_learning:ActionRobot38_0 a co_learning:ActionRobot ;
-    co_learning:hasAction "Pick up <object> in <location>" ;
+    co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasLocation "Top of rock pile" ;
     co_learning:hasNextActionRobot co_learning:ActionRobot38_1 ;
-    co_learning:hasObject "Large rock" .
+    co_learning:hasObject "Brown rock" .
 
 co_learning:ActionRobot38_1 a co_learning:ActionRobot ;
-    co_learning:hasAction "Drop <object> in <location>" ;
-    co_learning:hasLocation "<Left> side of field" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot38_2 ;
-    co_learning:hasObject "Large rock" .
+    co_learning:hasNextActionRobot co_learning:ActionRobot38_2 .
 
 co_learning:ActionRobot38_2 a co_learning:ActionRobot .
 
 co_learning:Situation38_0 a co_learning:Situation ;
     co_learning:hasLocation "Top of rock pile" ;
     co_learning:hasNextSituation co_learning:Situation38_1 ;
-    co_learning:hasObject "Large rock" .
+    co_learning:hasObject "Brown rock" .
 
-co_learning:Situation38_1 a co_learning:Situation ;
-    co_learning:hasLocation "Bottom of rock pile" ;
-    co_learning:hasObject "Large rock" .
+co_learning:Situation38_1 a co_learning:Situation .
 

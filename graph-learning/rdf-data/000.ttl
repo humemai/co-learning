@@ -7,10 +7,14 @@ co_learning:CP0 a co_learning:CollaborationPattern ;
     co_learning:hasCPLabel "Label"^^xsd:string ;
     co_learning:hasCPNum 0 ;
     co_learning:hasParticipantNumber 4069 ;
+    co_learning:hasRemainingRocks 0 ;
+    co_learning:hasRemainingTime 2336 ;
     co_learning:hasRoundNumber 3 ;
     co_learning:hasSituation co_learning:Situation0_0 ;
     co_learning:hasTicksLasted 117 ;
-    co_learning:hasTimeScore 2336 .
+    co_learning:hasTimeStamp "2024-05-03T13:41:23"^^xsd:dateTime ;
+    co_learning:hasUnixTimeStamp 1714736483 ;
+    co_learning:hasVictimHarm 400 .
 
 co_learning:ActionHuman0_0 a co_learning:ActionHuman ;
     co_learning:hasAction "Stand still in <location>" ;

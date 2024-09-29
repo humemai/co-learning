@@ -79,6 +79,31 @@ co_learning:hasRoundNumber a owl:DatatypeProperty ;
     rdfs:domain co_learning:CollaborationPattern ;
     rdfs:range xsd:integer .
 
+# DataProperty: hasTimeStammp
+co_learning:hasTimeStammp a owl:DatatypeProperty ;
+    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:range xsd:dateTime .
+
+# DataProperty: hasUnixTimeStamp
+co_learning:hasUnixTimeStamp a owl:DatatypeProperty ;
+    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:range xsd:integer .
+
+# DataProperty: hasRemainingTime
+co_learning:hasRemainingTime a owl:DatatypeProperty ;
+    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:range xsd:integer .
+
+# DataProperty: hasRemainingRocks
+co_learning:hasRemainingRocks a owl:DatatypeProperty ;
+    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:range xsd:integer .
+
+# DataProperty: hasVictimHarm
+co_learning:hasVictimHarm a owl:DatatypeProperty ;
+    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:range xsd:integer .
+
 # DataProperty: hasTimeScore
 co_learning:hasTimeScore a owl:DatatypeProperty ;
     rdfs:domain co_learning:CollaborationPattern ;

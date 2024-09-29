@@ -4,49 +4,46 @@
 co_learning:CP128 a co_learning:CollaborationPattern ;
     co_learning:hasActionHuman co_learning:ActionHuman128_0 ;
     co_learning:hasActionRobot co_learning:ActionRobot128_0 ;
-    co_learning:hasCPLabel "Pick up large on victim"^^xsd:string ;
+    co_learning:hasCPLabel "Something"^^xsd:string ;
     co_learning:hasCPNum 128 ;
-    co_learning:hasParticipantNumber 4096 ;
-    co_learning:hasRoundNumber 4 ;
+    co_learning:hasParticipantNumber 4092 ;
+    co_learning:hasRemainingRocks 0 ;
+    co_learning:hasRemainingTime 2363 ;
+    co_learning:hasRoundNumber 8 ;
     co_learning:hasSituation co_learning:Situation128_0 ;
-    co_learning:hasTicksLasted 92 ;
-    co_learning:hasTimeScore 4500 .
+    co_learning:hasTicksLasted 951 ;
+    co_learning:hasTimeStamp "2024-07-12T14:49:41"^^xsd:dateTime ;
+    co_learning:hasUnixTimeStamp 1720788581 ;
+    co_learning:hasVictimHarm 0 .
 
 co_learning:ActionHuman128_0 a co_learning:ActionHuman ;
-    co_learning:hasAction "Pick up <object> in <location>" ;
-    co_learning:hasActor "Victim" ;
-    co_learning:hasLocation "On top of <Actor>" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman128_1 ;
-    co_learning:hasObject "Small rock" .
+    co_learning:hasNextActionHuman co_learning:ActionHuman128_1 .
 
 co_learning:ActionHuman128_1 a co_learning:ActionHuman ;
-    co_learning:hasAction "Drop <object> in <location>" ;
-    co_learning:hasLocation "<Left> side of field" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman128_2 ;
-    co_learning:hasObject "Small rock" .
+    co_learning:hasNextActionHuman co_learning:ActionHuman128_2 .
 
 co_learning:ActionHuman128_2 a co_learning:ActionHuman .
 
 co_learning:ActionRobot128_0 a co_learning:ActionRobot ;
-    co_learning:hasAction "Pick up <object> in <location>" ;
-    co_learning:hasActor "Victim" ;
-    co_learning:hasLocation "On top of <Actor>" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot128_1 ;
-    co_learning:hasObject "Large rock" .
+    co_learning:hasAction "Stand still in <location>" ;
+    co_learning:hasLocation "Top of rock pile" ;
+    co_learning:hasNextActionRobot co_learning:ActionRobot128_1 .
 
 co_learning:ActionRobot128_1 a co_learning:ActionRobot ;
+    co_learning:hasAction "Pick up <object> in <location>" ;
+    co_learning:hasLocation "Top of rock pile" ;
+    co_learning:hasNextActionRobot co_learning:ActionRobot128_2 ;
+    co_learning:hasObject "Small rock" .
+
+co_learning:ActionRobot128_2 a co_learning:ActionRobot ;
     co_learning:hasAction "Drop <object> in <location>" ;
     co_learning:hasLocation "<Left> side of field" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot128_2 ;
-    co_learning:hasObject "Large rock" .
-
-co_learning:ActionRobot128_2 a co_learning:ActionRobot .
+    co_learning:hasObject "Small rock" .
 
 co_learning:Situation128_0 a co_learning:Situation ;
-    co_learning:hasActor "Victim" ;
-    co_learning:hasLocation "On top of <Actor>" ;
+    co_learning:hasLocation "Top of rock pile" ;
     co_learning:hasNextSituation co_learning:Situation128_1 ;
-    co_learning:hasObject "Large rock" .
+    co_learning:hasObject "Small rock" .
 
 co_learning:Situation128_1 a co_learning:Situation .
 

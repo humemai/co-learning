@@ -15,6 +15,14 @@ Participant;Round;2;3;4;5;6;7
 4070;6;[False, 3020];;;;;
 4070;7;[False, 2249];;;;;
 4070;8;[False, 1660];;;;;
+4071;1;['False', 2176];['stand still break big rock', 844];;;;
+4071;2;['False', 2036];['move break big rock bottom', 102];['stand still break big rock', 882];;;
+4071;3;['False', 6];['stand still break big rock', 744];['move break big rock bottom', 684];['Remove small rocks', 1586];;
+4071;4;['False', 182];['stand still break big rock', 596];['Remove small rocks', 2242];;;
+4071;5;['False', 1184];['move break big rock bottom', 159];['Remove small rocks', 1677];;;
+4071;6;['False', 879];['stand still break big rock', 4];['Remove small rocks', 1944];['move break big rock bottom', 193];;
+4071;7;['False', 1609];['stand still break big rock', 664];['Remove small rocks', 175];['move break big rock bottom', 572];;
+4071;8;['False', 1655];['move break big rock bottom', 250];['stand still break big rock', 806];['remove left large rock', 309];;
 4073;1;[False, 3020];;;;;
 4073;2;['False', 2];['Small rocks on top', 3018];;;;
 4073;3;['False', 4];['Large rocks on top', 546];['Small rocks on top', 2470];;;

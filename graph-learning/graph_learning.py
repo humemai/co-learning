@@ -5,6 +5,9 @@ import ast
 import json
 from glob import glob
 from collections import defaultdict
+import math
+import re
+from datetime import datetime
 
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -15,7 +18,6 @@ import rdflib
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
-from IPython.display import display, Markdown
 
 
 def parse_cp_messages(
@@ -98,7 +100,8 @@ def parse_cp_messages(
                                 content_pieces = []
                                 for child in item.children:
                                     if isinstance(child, bs4.element.Tag):
-                                        # If it's a paragraph, extract the text (excluding child tags)
+                                        # If it's a paragraph, extract the text
+                                        # (excluding child tags)
                                         if child.name == "p":
                                             text = "".join(
                                                 child.find_all(
@@ -374,71 +377,99 @@ def match_cp_with_execution(all_cp_messages: dict, cp_execution: dict) -> dict:
     return cp_messages_execution
 
 
-def get_scores(
-    path: str = "./user-raw-data/new/data_aggregate_complete.csv", sep: str = ","
-):
-    """Parse the scores from the CSV file.
+def parse_time(date: str, time: str):
+    # Regex to extract day, month, year, hour, minute, second
+    date_pattern = r"date_(\d{2})d-(\d{2})m-(\d{4})y"
+    time_pattern = r"time_(\d{2})h-(\d{2})m-(\d{2})s"
 
-    Args:
-        path (str): The path to the CSV file containing the scores.
-        sep (str): The separator used in the CSV file.
+    # Extract date components
+    date_match = re.match(date_pattern, date)
+    time_match = re.match(time_pattern, time)
 
-    Returns:
-        dict: A dictionary containing the parsed scores.
-    """
+    if date_match and time_match:
+        day, month, year = date_match.groups()
+        hour, minute, second = time_match.groups()
 
-    # Load the CSV file
+        # Combine into a single datetime object with 'T' for xsd:dateTime format
+        dt_str = f"{year}-{month}-{day}T{hour}:{minute}:{second}"
+        dt_obj = datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S")
+
+        # Get Unix timestamp (seconds since the epoch)
+        unix_time = int(dt_obj.timestamp())
+
+        return dt_str, unix_time
+
+    return None, None  # Return None if the pattern doesn't match
+
+
+def get_metrics(path: str = "./user-raw-data/new/data_aggregate.csv", sep: str = ","):
     data = pd.read_csv(path, sep=sep)
 
     # Filter the DataFrame to only include rows where Condition == "C3"
-    filtered_data = data[data["Condition"] == "C3"]
+    data = data[data["Condition"] == "C3"]
 
-    # Initialize the final result dictionary
-    scores = {}
+    metrics = {}
 
+    weird = 0
     # Iterate through each row in the filtered DataFrame
-    for index, row in filtered_data.iterrows():
+    for index, row in data.iterrows():
         participant = row["Participant"]
         roundnr = row["Roundnr"]
-        time_score = row["Time_score"]
+        date = row["Date"]
+        time = row["Time"]
+
+        dt_str, unix_time = parse_time(date, time)
+
+        remaining_time = row["corrected_tick"]
+        remaining_rocks = row["remaining_rocks"]
+        victim_harm = row["victim_harm"]
 
         # Ensure that the participant exists in the result dictionary
-        if participant not in scores:
-            scores[participant] = {}
-        try:
-            # Store the round number and time score in the sub-dictionary
-            scores[participant][roundnr] = int(time_score)
-        except ValueError:
-            print(
-                f"Invalid time score for participant {participant} in round {roundnr}"
-            )
+        if participant not in metrics:
+            metrics[participant] = {}
+        if roundnr not in metrics[participant]:
+            metrics[participant][roundnr] = {}
 
-    # Now 'result' contains the desired dictionary structure
-    return scores
+        if math.isnan(remaining_time) or math.isnan(victim_harm):
+            # this is not acceptable, so we won't include it.
+            weird += 1
+            continue
+
+        if math.isnan(remaining_rocks):
+            remaining_rocks = 0
+
+        metrics[participant][roundnr]["timestamp"] = dt_str
+        metrics[participant][roundnr]["unix_timestamp"] = unix_time
+        metrics[participant][roundnr]["remaining_time"] = int(remaining_time)
+        metrics[participant][roundnr]["remaining_rocks"] = int(remaining_rocks)
+        metrics[participant][roundnr]["victim_harm"] = int(victim_harm)
+
+    print(f"number of weird: {weird}")
+
+    return metrics
 
 
-def get_final_data(cp_messages_execution: dict, scores: dict):
-    """Merge the CP messages and scores into a single data structure.
+def get_final_data(cp_messages_execution: dict, metrics: dict):
+    """Merge the CP messages and metrics into a single data structure.
 
     Args:
-        cp_messages_execution (dict): A dictionary containing the matched CP messages and execution data.
-        scores (dict): A dictionary containing the parsed scores.
+        cp_messages_execution (dict): A dictionary containing the matched CP messages
+        and execution data.
+        metrics (dict): A dictionary containing the parsed metrics.
 
     Returns:
         list: A list containing the merged data.
     """
     data = []
-    naive_cps = []
     cp_added = 0
+    weird = 0
 
     for participant, rounds in cp_messages_execution.items():
         for round_num, round_data in rounds.items():
-            try:
-                score_for_round = scores[participant][round_num]
-            except KeyError:
-                print(
-                    f"No score found for participant {participant} in round {round_num}"
-                )
+            metrics_ = metrics[participant][round_num]
+
+            if "timestamp" not in metrics_:
+                weird += 1
                 continue
 
             for round_data_ in round_data:
@@ -448,20 +479,20 @@ def get_final_data(cp_messages_execution: dict, scores: dict):
                     "cp_name": round_data_["cp_name"],
                     "ticks_lasted": round_data_["ticks_lasted"],
                     "round_num": round_num,
-                    "time_score": score_for_round,
+                    "timestamp": metrics_["timestamp"],
+                    "unix_timestamp": metrics_["unix_timestamp"],
+                    "remaining_time": metrics_["remaining_time"],
+                    "remaining_rocks": metrics_["remaining_rocks"],
+                    "victim_harm": metrics_["victim_harm"],
                     "situation": round_data_["situation"],
                     "actionHuman": round_data_["actionHuman"],
                     "actionRobot": round_data_["actionRobot"],
                 }
                 data.append(cp)
-                naive_cps.append(
-                    {
-                        "situation": round_data_["situation"],
-                        "actionHuman": round_data_["actionHuman"],
-                        "actionRobot": round_data_["actionRobot"],
-                    }
-                )
                 cp_added += 1
+
+    print(f"number of cps added: {cp_added}")
+    print(f"number of weird: {weird}")
 
     return data
 
@@ -517,8 +548,36 @@ def make_rdf_data(
         g.add(
             (
                 cp_uri,
-                CO_LEARNING.hasTimeScore,
-                Literal(cp["time_score"], datatype=XSD.integer),
+                CO_LEARNING.hasTimeStamp,
+                Literal(cp["timestamp"], datatype=XSD.dateTime),
+            )
+        )
+        g.add(
+            (
+                cp_uri,
+                CO_LEARNING.hasUnixTimeStamp,
+                Literal(cp["unix_timestamp"], datatype=XSD.integer),
+            )
+        )
+        g.add(
+            (
+                cp_uri,
+                CO_LEARNING.hasRemainingTime,
+                Literal(cp["remaining_time"], datatype=XSD.integer),
+            )
+        )
+        g.add(
+            (
+                cp_uri,
+                CO_LEARNING.hasRemainingRocks,
+                Literal(cp["remaining_rocks"], datatype=XSD.integer),
+            )
+        )
+        g.add(
+            (
+                cp_uri,
+                CO_LEARNING.hasVictimHarm,
+                Literal(cp["victim_harm"], datatype=XSD.integer),
             )
         )
 
@@ -799,7 +858,11 @@ def get_some_stats(directory: str = "./rdf-data") -> str:
     """
 
     # Initialize lists to store statistics
-    time_scores = []
+    timestamps = []
+    unix_timestamps = []
+    remaining_times = []
+    remaining_rocks = []
+    victim_harms = []
     ticks_lasted = []
     participants = defaultdict(int)  # Count collaboration patterns per participant
     non_empty_situations_per_graph = []
@@ -831,8 +894,16 @@ def get_some_stats(directory: str = "./rdf-data") -> str:
 
         # Extract triples and gather data
         for s, p, o in g:
-            if p.endswith("hasTimeScore"):
-                time_scores.append(int(o))
+            if p.endswith("hasTimeStamp"):
+                timestamps.append(o)
+            if p.endswith("hasUnixTimeStamp"):
+                unix_timestamps.append(int(o))
+            if p.endswith("hasRemainingTime"):
+                remaining_times.append(int(o))
+            if p.endswith("hasRemainingRocks"):
+                remaining_rocks.append(int(o))
+            if p.endswith("hasVictimHarm"):
+                victim_harms.append(int(o))
             if p.endswith("hasTicksLasted"):
                 ticks_lasted.append(int(o))
             if p.endswith("hasParticipantNumber"):
@@ -862,8 +933,14 @@ def get_some_stats(directory: str = "./rdf-data") -> str:
             "min": np.min(data),
         }
 
-    # TimeScore statistics
-    time_score_stats = calculate_stats(time_scores)
+    # Remaining time statistics
+    remaining_time_stats = calculate_stats(remaining_times)
+
+    # Remaining rocks statistics
+    remaining_rocks_stats = calculate_stats(remaining_rocks)
+
+    # Victim harm statistics
+    victim_harm_stats = calculate_stats(victim_harms)
 
     # TicksLasted statistics
     ticks_lasted_stats = calculate_stats(ticks_lasted)
@@ -880,7 +957,9 @@ def get_some_stats(directory: str = "./rdf-data") -> str:
 
     # Return all stats as a dictionary
     return {
-        "time_score": time_score_stats,
+        "remaining_time_stats": remaining_time_stats,
+        "remaining_rocks_stats": remaining_rocks_stats,
+        "victim_harm_stats": victim_harm_stats,
         "ticks_lasted": ticks_lasted_stats,
         "cps_per_participant": {
             **cps_per_participant_stats,
