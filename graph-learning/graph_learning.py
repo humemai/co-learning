@@ -497,8 +497,8 @@ def get_final_data(cp_messages_execution: dict, metrics: dict):
     return data
 
 
-def make_rdf_data(
-    raw_data_path: str = "raw-data.json", output_dir: str = "./rdf-data"
+def make_rdf_data_iid(
+    raw_data_path: str = "raw-data.json", output_dir: str = "./rdf-data-iid"
 ) -> None:
     """Create RDF data from the raw data.
 
@@ -824,7 +824,7 @@ def visualize_graph(G, node_labels, edge_labels, output_dir, output_filename) ->
     plt.clf()
 
 
-def visualize_ttl_files(directory="./rdf-data", output_dir="graphs-visualized") -> None:
+def visualize_ttl_files_iid(directory="./rdf-data-iid", output_dir="graphs-visualized-iid") -> None:
     """Process all .ttl files in the specified directory.
 
     Args:
@@ -846,7 +846,7 @@ def visualize_ttl_files(directory="./rdf-data", output_dir="graphs-visualized") 
         visualize_graph(G, node_labels, edge_labels, output_dir, base_filename)
 
 
-def get_some_stats(directory: str = "./rdf-data") -> str:
+def get_some_stats_iid(directory: str = "./rdf-data-iid") -> str:
     """Get some statistics from the RDF data.
 
     Args:
