@@ -1,3 +1,4 @@
+@prefix humemai:    <https://humem.ai/ontology#> .
 @prefix co_learning: <https://humem.ai/example/co_learning#> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
@@ -8,8 +9,11 @@ co_learning: a owl:Ontology .
 
 ########## Classes ##########
 
-# CollaborationPattern Class
-co_learning:CollaborationPattern a owl:Class .
+# Participant Class
+co_learning:Participant a owl:Class .
+
+# Robot Class
+co_learning:Robot a owl:Class .
 
 # Situation Class
 co_learning:Situation a owl:Class .
@@ -24,7 +28,8 @@ co_learning:RobotAction a owl:Class .
 
 # Property: hasSituation
 co_learning:hasSituation a owl:ObjectProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain [ a owl:Class ;
+                  owl:unionOf (co_learning:Participant co_learning:Robot) ] ;
     rdfs:range co_learning:Situation .
 
 # Property: hasNextSituation
@@ -34,7 +39,8 @@ co_learning:hasNextSituation a owl:ObjectProperty ;
 
 # Property: hasHumanAction
 co_learning:hasHumanAction a owl:ObjectProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain [ a owl:Class ;
+                  owl:unionOf (co_learning:Participant co_learning:Robot) ] ;
     rdfs:range co_learning:HumanAction .
 
 # Property: hasNextHumanAction
@@ -44,7 +50,8 @@ co_learning:hasNextHumanAction a owl:ObjectProperty ;
 
 # Property: hasRobotAction
 co_learning:hasRobotAction a owl:ObjectProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain [ a owl:Class ;
+                  owl:unionOf (co_learning:Participant co_learning:Robot) ] ;
     rdfs:range co_learning:RobotAction .
 
 # Property: hasNextRobotAction
@@ -52,61 +59,62 @@ co_learning:hasNextRobotAction a owl:ObjectProperty ;
     rdfs:domain co_learning:RobotAction ;
     rdfs:range co_learning:RobotAction .
 
+# Property: occursIn
+co_learning:occursIn a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+                  owl:unionOf (co_learning:HumanAction co_learning:RobotAction) ] ;
+    rdfs:range co_learning:Situation .
+
 ########## Data Properties ##########
 
-# DataProperty: hasCPNum
-co_learning:hasCPNum a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
-    rdfs:range xsd:integer .
+# # DataProperty: hasCPNum
+# co_learning:hasCPNum a owl:DatatypeProperty ;
+#     rdfs:domain humemai:Event: ;
+#     rdfs:range xsd:integer .
 
 # DataProperty: hasParticipantNumber
 co_learning:hasParticipantNumber a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasCPLabel
 co_learning:hasCPLabel a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:string .
 
 # DataProperty: hasTicksLasted
 co_learning:hasTicksLasted a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasRoundNumber
 co_learning:hasRoundNumber a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasTimeStammp
 co_learning:hasTimeStammp a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:dateTime .
 
 # DataProperty: hasUnixTimeStamp
 co_learning:hasUnixTimeStamp a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasRemainingTime
 co_learning:hasRemainingTime a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasRemainingRocks
 co_learning:hasRemainingRocks a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasVictimHarm
 co_learning:hasVictimHarm a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
-    rdfs:range xsd:integer .
-
-# DataProperty: hasTimeScore
-co_learning:hasTimeScore a owl:DatatypeProperty ;
-    rdfs:domain co_learning:CollaborationPattern ;
+    rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
 
 # DataProperty: hasActor

@@ -1,9 +1,9 @@
-@prefix co_learning: <http://example.org/co_learning#> .
+@prefix co_learning: <https://humem.ai/example/co_learning#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 co_learning:CP97 a co_learning:CollaborationPattern ;
-    co_learning:hasActionHuman co_learning:ActionHuman97_0 ;
-    co_learning:hasActionRobot co_learning:ActionRobot97_0 ;
+    co_learning:hasHumanAction co_learning:HumanAction97_0 ;
+    co_learning:hasRobotAction co_learning:RobotAction97_0 ;
     co_learning:hasCPLabel "Break Big Rock"^^xsd:string ;
     co_learning:hasCPNum 97 ;
     co_learning:hasParticipantNumber 4089 ;
@@ -16,25 +16,25 @@ co_learning:CP97 a co_learning:CollaborationPattern ;
     co_learning:hasUnixTimeStamp 1724054483 ;
     co_learning:hasVictimHarm 1000 .
 
-co_learning:ActionHuman97_0 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman97_1 .
+co_learning:HumanAction97_0 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction97_1 .
 
-co_learning:ActionHuman97_1 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman97_2 .
+co_learning:HumanAction97_1 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction97_2 .
 
-co_learning:ActionHuman97_2 a co_learning:ActionHuman .
+co_learning:HumanAction97_2 a co_learning:HumanAction .
 
-co_learning:ActionRobot97_0 a co_learning:ActionRobot ;
+co_learning:RobotAction97_0 a co_learning:RobotAction ;
     co_learning:hasAction "Move to <Location>" ;
     co_learning:hasLocation "Top of rock pile" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot97_1 .
+    co_learning:hasNextRobotAction co_learning:RobotAction97_1 .
 
-co_learning:ActionRobot97_1 a co_learning:ActionRobot ;
+co_learning:RobotAction97_1 a co_learning:RobotAction ;
     co_learning:hasLocation "On top of <Object>" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot97_2 ;
+    co_learning:hasNextRobotAction co_learning:RobotAction97_2 ;
     co_learning:hasObject "Large rock" .
 
-co_learning:ActionRobot97_2 a co_learning:ActionRobot ;
+co_learning:RobotAction97_2 a co_learning:RobotAction ;
     co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasObject "Large rock" .
 

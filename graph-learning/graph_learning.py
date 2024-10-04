@@ -512,7 +512,7 @@ def make_rdf_data_iid(
         data = json.load(f)
 
     # Define the namespace
-    CO_LEARNING = Namespace("http://example.org/co_learning#")
+    CO_LEARNING = Namespace("https://humem.ai/example/co_learning#")
 
     # Create the output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
@@ -624,25 +624,25 @@ def make_rdf_data_iid(
                 elif elem_type == "object":
                     g.add((situation_uri, CO_LEARNING.hasObject, Literal(elem_content)))
 
-        # Handle ActionHuman
+        # Handle HumanAction
         prev_action_human_uri = None
         for idx, action_human in enumerate(cp["actionHuman"]):
-            action_human_uri = CO_LEARNING[f"ActionHuman{cp_num}_{idx}"]
-            g.add((action_human_uri, RDF.type, CO_LEARNING.ActionHuman))
+            action_human_uri = CO_LEARNING[f"HumanAction{cp_num}_{idx}"]
+            g.add((action_human_uri, RDF.type, CO_LEARNING.HumanAction))
 
             if idx == 0:
-                g.add((cp_uri, CO_LEARNING.hasActionHuman, action_human_uri))
+                g.add((cp_uri, CO_LEARNING.hasHumanAction, action_human_uri))
             else:
                 g.add(
                     (
                         prev_action_human_uri,
-                        CO_LEARNING.hasNextActionHuman,
+                        CO_LEARNING.hasNextHumanAction,
                         action_human_uri,
                     )
                 )
             prev_action_human_uri = action_human_uri
 
-            # Add data properties to ActionHuman
+            # Add data properties to HumanAction
             for elem in action_human:
                 elem_type = elem["type"]
                 elem_content = elem["content"]
@@ -667,25 +667,25 @@ def make_rdf_data_iid(
                         (action_human_uri, CO_LEARNING.hasObject, Literal(elem_content))
                     )
 
-        # Handle ActionRobot
+        # Handle RobotAction
         prev_action_robot_uri = None
         for idx, action_robot in enumerate(cp["actionRobot"]):
-            action_robot_uri = CO_LEARNING[f"ActionRobot{cp_num}_{idx}"]
-            g.add((action_robot_uri, RDF.type, CO_LEARNING.ActionRobot))
+            action_robot_uri = CO_LEARNING[f"RobotAction{cp_num}_{idx}"]
+            g.add((action_robot_uri, RDF.type, CO_LEARNING.RobotAction))
 
             if idx == 0:
-                g.add((cp_uri, CO_LEARNING.hasActionRobot, action_robot_uri))
+                g.add((cp_uri, CO_LEARNING.hasRobotAction, action_robot_uri))
             else:
                 g.add(
                     (
                         prev_action_robot_uri,
-                        CO_LEARNING.hasNextActionRobot,
+                        CO_LEARNING.hasNextRobotAction,
                         action_robot_uri,
                     )
                 )
             prev_action_robot_uri = action_robot_uri
 
-            # Add data properties to ActionRobot
+            # Add data properties to RobotAction
             for elem in action_robot:
                 elem_type = elem["type"]
                 elem_content = elem["content"]
@@ -869,7 +869,7 @@ def get_some_stats_iid(directory: str = "./rdf-data-iid") -> str:
     non_empty_action_humans_per_graph = []
     non_empty_action_robots_per_graph = []
 
-    CO_LEARNING_NS = "http://example.org/co_learning#"
+    CO_LEARNING_NS = "https://humem.ai/example/co_learning#"
 
     # Function to check if a node is non-empty
     def is_non_empty(g, node):
@@ -909,14 +909,14 @@ def get_some_stats_iid(directory: str = "./rdf-data-iid") -> str:
             if p.endswith("hasParticipantNumber"):
                 participants[int(o)] += 1
 
-        # Identify instances of Situation, ActionHuman, and ActionRobot
+        # Identify instances of Situation, HumanAction, and RobotAction
         for s, rdf_type in g.subject_objects(rdflib.RDF.type):
             rdf_type_str = str(rdf_type)
             if rdf_type_str == CO_LEARNING_NS + "Situation" and is_non_empty(g, s):
                 non_empty_situations += 1
-            elif rdf_type_str == CO_LEARNING_NS + "ActionHuman" and is_non_empty(g, s):
+            elif rdf_type_str == CO_LEARNING_NS + "HumanAction" and is_non_empty(g, s):
                 non_empty_action_humans += 1
-            elif rdf_type_str == CO_LEARNING_NS + "ActionRobot" and is_non_empty(g, s):
+            elif rdf_type_str == CO_LEARNING_NS + "RobotAction" and is_non_empty(g, s):
                 non_empty_action_robots += 1
 
         non_empty_situations_per_graph.append(non_empty_situations)
@@ -950,7 +950,7 @@ def get_some_stats_iid(directory: str = "./rdf-data-iid") -> str:
     cps_per_participant_stats = calculate_stats(cps_per_participant)
     num_unique_participants = len(participants)
 
-    # Non-empty Situations, ActionHuman, ActionRobot statistics
+    # Non-empty Situations, HumanAction, RobotAction statistics
     non_empty_situations_stats = calculate_stats(non_empty_situations_per_graph)
     non_empty_action_humans_stats = calculate_stats(non_empty_action_humans_per_graph)
     non_empty_action_robots_stats = calculate_stats(non_empty_action_robots_per_graph)

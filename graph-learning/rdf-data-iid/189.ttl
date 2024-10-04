@@ -1,9 +1,9 @@
-@prefix co_learning: <http://example.org/co_learning#> .
+@prefix co_learning: <https://humem.ai/example/co_learning#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 co_learning:CP189 a co_learning:CollaborationPattern ;
-    co_learning:hasActionHuman co_learning:ActionHuman189_0 ;
-    co_learning:hasActionRobot co_learning:ActionRobot189_0 ;
+    co_learning:hasHumanAction co_learning:HumanAction189_0 ;
+    co_learning:hasRobotAction co_learning:RobotAction189_0 ;
     co_learning:hasCPLabel "Prevent brown guillotine"^^xsd:string ;
     co_learning:hasCPNum 189 ;
     co_learning:hasParticipantNumber 4098 ;
@@ -16,25 +16,25 @@ co_learning:CP189 a co_learning:CollaborationPattern ;
     co_learning:hasUnixTimeStamp 1722348218 ;
     co_learning:hasVictimHarm 300 .
 
-co_learning:ActionHuman189_0 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman189_1 .
+co_learning:HumanAction189_0 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction189_1 .
 
-co_learning:ActionHuman189_1 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman189_2 .
+co_learning:HumanAction189_1 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction189_2 .
 
-co_learning:ActionHuman189_2 a co_learning:ActionHuman .
+co_learning:HumanAction189_2 a co_learning:HumanAction .
 
-co_learning:ActionRobot189_0 a co_learning:ActionRobot ;
+co_learning:RobotAction189_0 a co_learning:RobotAction ;
     co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasLocation "On top of <Object>" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot189_1 ;
+    co_learning:hasNextRobotAction co_learning:RobotAction189_1 ;
     co_learning:hasObject "Brown rock",
         "Large rock" .
 
-co_learning:ActionRobot189_1 a co_learning:ActionRobot ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot189_2 .
+co_learning:RobotAction189_1 a co_learning:RobotAction ;
+    co_learning:hasNextRobotAction co_learning:RobotAction189_2 .
 
-co_learning:ActionRobot189_2 a co_learning:ActionRobot .
+co_learning:RobotAction189_2 a co_learning:RobotAction .
 
 co_learning:Situation189_0 a co_learning:Situation ;
     co_learning:hasLocation "On top of <Object>" ;

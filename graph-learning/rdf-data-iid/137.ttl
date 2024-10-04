@@ -1,9 +1,9 @@
-@prefix co_learning: <http://example.org/co_learning#> .
+@prefix co_learning: <https://humem.ai/example/co_learning#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 co_learning:CP137 a co_learning:CollaborationPattern ;
-    co_learning:hasActionHuman co_learning:ActionHuman137_0 ;
-    co_learning:hasActionRobot co_learning:ActionRobot137_0 ;
+    co_learning:hasHumanAction co_learning:HumanAction137_0 ;
+    co_learning:hasRobotAction co_learning:RobotAction137_0 ;
     co_learning:hasCPLabel "brown rock top"^^xsd:string ;
     co_learning:hasCPNum 137 ;
     co_learning:hasParticipantNumber 4094 ;
@@ -16,39 +16,39 @@ co_learning:CP137 a co_learning:CollaborationPattern ;
     co_learning:hasUnixTimeStamp 1721729432 ;
     co_learning:hasVictimHarm 0 .
 
-co_learning:ActionHuman137_0 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman137_1 .
+co_learning:HumanAction137_0 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction137_1 .
 
-co_learning:ActionHuman137_1 a co_learning:ActionHuman ;
+co_learning:HumanAction137_1 a co_learning:HumanAction ;
     co_learning:hasAction "Move to <Object>" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman137_2 ;
+    co_learning:hasNextHumanAction co_learning:HumanAction137_2 ;
     co_learning:hasObject "Brown rock" .
 
-co_learning:ActionHuman137_2 a co_learning:ActionHuman ;
+co_learning:HumanAction137_2 a co_learning:HumanAction ;
     co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasLocation "Top of rock pile" ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman137_3 ;
+    co_learning:hasNextHumanAction co_learning:HumanAction137_3 ;
     co_learning:hasObject "Brown rock" .
 
-co_learning:ActionHuman137_3 a co_learning:ActionHuman .
+co_learning:HumanAction137_3 a co_learning:HumanAction .
 
-co_learning:ActionRobot137_0 a co_learning:ActionRobot ;
+co_learning:RobotAction137_0 a co_learning:RobotAction ;
     co_learning:hasAction "Move back and forth in <location>" ;
     co_learning:hasLocation "Top of rock pile" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot137_1 .
+    co_learning:hasNextRobotAction co_learning:RobotAction137_1 .
 
-co_learning:ActionRobot137_1 a co_learning:ActionRobot ;
+co_learning:RobotAction137_1 a co_learning:RobotAction ;
     co_learning:hasAction "Move to <Object>" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot137_2 ;
+    co_learning:hasNextRobotAction co_learning:RobotAction137_2 ;
     co_learning:hasObject "Brown rock" .
 
-co_learning:ActionRobot137_2 a co_learning:ActionRobot ;
+co_learning:RobotAction137_2 a co_learning:RobotAction ;
     co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasLocation "Top of rock pile" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot137_3 ;
+    co_learning:hasNextRobotAction co_learning:RobotAction137_3 ;
     co_learning:hasObject "Brown rock" .
 
-co_learning:ActionRobot137_3 a co_learning:ActionRobot .
+co_learning:RobotAction137_3 a co_learning:RobotAction .
 
 co_learning:Situation137_0 a co_learning:Situation ;
     co_learning:hasLocation "Top of rock pile" ;

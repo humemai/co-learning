@@ -1,9 +1,9 @@
-@prefix co_learning: <http://example.org/co_learning#> .
+@prefix co_learning: <https://humem.ai/example/co_learning#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 co_learning:CP195 a co_learning:CollaborationPattern ;
-    co_learning:hasActionHuman co_learning:ActionHuman195_0 ;
-    co_learning:hasActionRobot co_learning:ActionRobot195_0 ;
+    co_learning:hasHumanAction co_learning:HumanAction195_0 ;
+    co_learning:hasRobotAction co_learning:RobotAction195_0 ;
     co_learning:hasCPLabel "BreakBigTop"^^xsd:string ;
     co_learning:hasCPNum 195 ;
     co_learning:hasParticipantNumber 4099 ;
@@ -16,24 +16,24 @@ co_learning:CP195 a co_learning:CollaborationPattern ;
     co_learning:hasUnixTimeStamp 1723018107 ;
     co_learning:hasVictimHarm 100 .
 
-co_learning:ActionHuman195_0 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman195_1 .
+co_learning:HumanAction195_0 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction195_1 .
 
-co_learning:ActionHuman195_1 a co_learning:ActionHuman ;
-    co_learning:hasNextActionHuman co_learning:ActionHuman195_2 .
+co_learning:HumanAction195_1 a co_learning:HumanAction ;
+    co_learning:hasNextHumanAction co_learning:HumanAction195_2 .
 
-co_learning:ActionHuman195_2 a co_learning:ActionHuman .
+co_learning:HumanAction195_2 a co_learning:HumanAction .
 
-co_learning:ActionRobot195_0 a co_learning:ActionRobot ;
+co_learning:RobotAction195_0 a co_learning:RobotAction ;
     co_learning:hasAction "Break <object> in <location>" ;
     co_learning:hasLocation "Top of rock pile" ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot195_1 ;
+    co_learning:hasNextRobotAction co_learning:RobotAction195_1 ;
     co_learning:hasObject "Large rock" .
 
-co_learning:ActionRobot195_1 a co_learning:ActionRobot ;
-    co_learning:hasNextActionRobot co_learning:ActionRobot195_2 .
+co_learning:RobotAction195_1 a co_learning:RobotAction ;
+    co_learning:hasNextRobotAction co_learning:RobotAction195_2 .
 
-co_learning:ActionRobot195_2 a co_learning:ActionRobot .
+co_learning:RobotAction195_2 a co_learning:RobotAction .
 
 co_learning:Situation195_0 a co_learning:Situation ;
     co_learning:hasLocation "Top of rock pile" ;
