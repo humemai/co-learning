@@ -65,12 +65,12 @@ co_learning:occursIn a owl:ObjectProperty ;
                   owl:unionOf (co_learning:HumanAction co_learning:RobotAction) ] ;
     rdfs:range co_learning:Situation .
 
-########## Data Properties ##########
+########## Event Data Properties ##########
 
-# # DataProperty: hasCPNum
-# co_learning:hasCPNum a owl:DatatypeProperty ;
-#     rdfs:domain humemai:Event: ;
-#     rdfs:range xsd:integer .
+# DataProperty: hasCPNum
+co_learning:hasCPNum a owl:DatatypeProperty ;
+    rdfs:domain humemai:Event: ;
+    rdfs:range xsd:integer .
 
 # DataProperty: hasParticipantNumber
 co_learning:hasParticipantNumber a owl:DatatypeProperty ;
@@ -116,6 +116,8 @@ co_learning:hasRemainingRocks a owl:DatatypeProperty ;
 co_learning:hasVictimHarm a owl:DatatypeProperty ;
     rdfs:domain humemai:Event: ;
     rdfs:range xsd:integer .
+
+########## Situation and Action Data Properties ##########
 
 # DataProperty: hasActor
 co_learning:hasActor a owl:DatatypeProperty ;

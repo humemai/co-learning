@@ -201,7 +201,7 @@ def parse_cp_messages(
                             actionA.append(actionA_)
 
                         # Output the parsed actions
-                        parsed_html["actionHuman"] = actionA
+                        parsed_html["HumanAction"] = actionA
 
                     # Process 'actionB' if present and not empty
                     if "actionB" in html_content and html_content["actionB"].strip():
@@ -267,7 +267,7 @@ def parse_cp_messages(
                             # Append the actionB_ list to the main actionB list
                             actionB.append(actionB_)
                         # Output the parsed actions
-                        parsed_html["actionRobot"] = actionB
+                        parsed_html["RobotAction"] = actionB
 
                     parsed_round_data.append(parsed_html)
                 else:
@@ -485,8 +485,8 @@ def get_final_data(cp_messages_execution: dict, metrics: dict):
                     "remaining_rocks": metrics_["remaining_rocks"],
                     "victim_harm": metrics_["victim_harm"],
                     "situation": round_data_["situation"],
-                    "actionHuman": round_data_["actionHuman"],
-                    "actionRobot": round_data_["actionRobot"],
+                    "HumanAction": round_data_["HumanAction"],
+                    "RobotAction": round_data_["RobotAction"],
                 }
                 data.append(cp)
                 cp_added += 1
@@ -626,7 +626,7 @@ def make_rdf_data_iid(
 
         # Handle HumanAction
         prev_action_human_uri = None
-        for idx, action_human in enumerate(cp["actionHuman"]):
+        for idx, action_human in enumerate(cp["HumanAction"]):
             action_human_uri = CO_LEARNING[f"HumanAction{cp_num}_{idx}"]
             g.add((action_human_uri, RDF.type, CO_LEARNING.HumanAction))
 
@@ -669,7 +669,7 @@ def make_rdf_data_iid(
 
         # Handle RobotAction
         prev_action_robot_uri = None
-        for idx, action_robot in enumerate(cp["actionRobot"]):
+        for idx, action_robot in enumerate(cp["RobotAction"]):
             action_robot_uri = CO_LEARNING[f"RobotAction{cp_num}_{idx}"]
             g.add((action_robot_uri, RDF.type, CO_LEARNING.RobotAction))
 

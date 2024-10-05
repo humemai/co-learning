@@ -62,7 +62,7 @@ There are two types of graph learning here.
         }
       ]
     ],
-    "actionHuman": [
+    "HumanAction": [
       [
         {
           "type": "action",
@@ -76,7 +76,7 @@ There are two types of graph learning here.
       [],
       []
     ],
-    "actionRobot": [
+    "RobotAction": [
       [],
       [
         {
@@ -109,4 +109,5 @@ There are two types of graph learning here.
 
 - Every CP is treated as an "event", which is a collection of episode memories in
   HumemAI
-- 
+- Currently saving them as episodic memories is done
+- Now I have to do some kinda semantic memory extraction
