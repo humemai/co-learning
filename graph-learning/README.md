@@ -5,7 +5,7 @@ There are two types of graph learning here.
 1. [`graph-learning-iid.ipynb`](./graph-learning-iid.ipynb) treats every graph (CP)
    coming from an iid.
 2. [`graph-learning-humemai.ipynb`](./graph-learning-humemai.ipynb) treats every graph
-   (CP) to be an episodic memory of the agent.
+   (CP) to be an episodic memory of the agent. `pip install humemai==2.0.2`
 
 ## [`process-raw-data`](./process-raw-data.ipynb)
 
