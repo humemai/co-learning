@@ -3,6 +3,10 @@
 This is my understanding of what Emma's doing.
 [Emma's youtube video](https://www.youtube.com/watch?v=zdgQ9XPaWXw) helps.
 
+## Graph learning
+
+We use graph learning to find the most representative memory (collaboration pattern). And the agent we use here is prepopulated with that memory. [See this jupyter notebook](https://github.com/humemai/humemai/blob/main/examples/co-learning/janus.ipynb) for more information.
+
 ## Dependencies
 
 - python3.8
@@ -23,7 +27,7 @@ This is my understanding of what Emma's doing.
 
 - Which scenario do you want to start with?
   - Choose numbers from 0 to 8.
-  - 0 is the dummy round. 1 to 4 is the ones with brown rock. 5 to 8 is the ones without
+  - 0 is the dummy round. 1 to 4 is the ones without brown rock. 5 to 8 is the ones with
 - Which participant number do you want to use?
   - This is the port number opeend at your localhost
 - Open up the web browswer with the port number:
