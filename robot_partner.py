@@ -126,7 +126,7 @@ class RobotPartner(AgentBrain):
             self.alpha = self.alpha / 2
         self.received_messages = []
 
-        self.database_name = "CP_ontology_" + str(self.agent_properties['participant_nr'])
+        # self.database_name = "CP_ontology_" + str(self.agent_properties['participant_nr'])
         self.database_name = "CP_ontology"
 
         if self.exp_condition == 'ontology':
@@ -163,6 +163,15 @@ class RobotPartner(AgentBrain):
         #self.wait_action(None)
         #self.wait_action(None)
         #self.wait_action(None)
+
+        # Send a welcome message here
+        self.send_message(
+            Message(
+                content=f"Welcome, I am your robot partner. I already have a collaboration pattern {self.cp_list} remembered from the previous interactions!",
+                from_id=self.agent_id,
+                to_id=None
+            )
+        )
 
     def filter_observations(self, state):
         self.state_tracker.update(state)
