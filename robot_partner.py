@@ -167,7 +167,7 @@ class RobotPartner(AgentBrain):
         # Send a welcome message here
         self.send_message(
             Message(
-                content=f"Welcome, I am your robot partner. I already have a collaboration pattern {self.cp_list} remembered from the previous interactions!",
+                content=f"Welcome, I am your robot partner. I already have collaboration patterns {self.cp_list} remembered from the previous interactions!",
                 from_id=self.agent_id,
                 to_id=None
             )
