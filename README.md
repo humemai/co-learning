@@ -10,7 +10,7 @@ representative prior pattern, and preload it into the robot before a new
 collaboration episode in the [MATRX](https://matrx-software.com/) Urban Search and
 Rescue (USAR) environment.
 
-For the research overview, see the [project page](https://humem.ai/projects/co-learning)
+For the research overview, see the [project page](https://humem.ai/research/co-learning)
 or the paper on [arXiv](https://arxiv.org/abs/2606.18836).
 
 This README focuses on the repository layout, environment setup, and how to
@@ -163,7 +163,7 @@ rock changes the local risk of debris removal.
 
 ## Further reading
 
-- [Project page](https://humem.ai/projects/co-learning)
+- [Project page](https://humem.ai/research/co-learning)
 - [Paper on arXiv](https://arxiv.org/abs/2606.18836)
 - [MATRX software](https://matrx-software.com/)
 
