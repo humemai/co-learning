@@ -29,12 +29,11 @@ dedicated drag-and-drop interface and a chat interface.
 
 ## Repository layout
 
-It is organized around four top-level areas:
+It is organized around three top-level areas:
 
 - [`runtime/`](./runtime): MATRX USAR experiment code, assets, visualizer, schema, and runtime configuration
 - [`data/`](./data): processed dataset and raw CSV inputs used for the paper analyses
 - [`analysis/`](./analysis): graph-learning notebooks, helper code, and generated analysis figures
-- [`paper/`](./paper): accepted paper source and supplementary material
 
 In more detail:
 
@@ -49,9 +48,7 @@ In more detail:
 - [`analysis/graph_learning.py`](./analysis/graph_learning.py): utilities for parsing raw data and generating RDF-style graph artifacts
 - [`analysis/process-raw-data.ipynb`](./analysis/process-raw-data.ipynb): notebook that regenerates `data/raw-data.json` from the raw CSV files
 - [`analysis/graph-learning-humemai.ipynb`](./analysis/graph-learning-humemai.ipynb): notebook for the HumemAI / JanusGraph / RGCN analysis workflow used for the paper figures
-- [`analysis/figures/`](./analysis/figures): generated analysis figures referenced by the supplementary material
-- [`paper/roman-2026/`](./paper/roman-2026): accepted paper source, references, figures, and compiled PDF
-- [`paper/supplementary-material/`](./paper/supplementary-material): supplementary markdown, figures, and PDF
+- [`analysis/figures/`](./analysis/figures): generated analysis figures used in the paper
 
 The `humemai-research` package is not vendored here. Install it from PyPI when you
 need the JanusGraph-based analysis workflow.
